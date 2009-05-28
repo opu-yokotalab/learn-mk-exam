@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="1">
+<item id="2" type="fill_in_the_blank"><question>
+<br/><br/>
+<pre>
+int main(){
+  int a,b,max;
+scanf("%d%d",&amp;a,&amp;b);
+        [ A ]=(a&gt;=b)?a;
+        :b;
+        }
+
+</pre>
+</question>
+<response id="1">=[A]</response>
+<evaluate><function></function><correct id="1">max</correct>
+<score></score><weight/><point></point></evaluate><explanation></explanation></item>
+</program_set>

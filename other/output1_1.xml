@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="1">
+  <item id="1" type="fill_in_the_blank">
+    <question>以下は2乗の値を出力するプログラムである．<br/>空欄を埋めて完成させよ．<br/><br/>
+<pre>
+int main(){
+  int x=2;
+
+  x=[ A ];
+  printf("2*2=%d/n",x);
+}
+</pre>
+    </question>
+    <response id="1">=[A]</response>
+    <evaluate>
+      <function></function>
+      <correct id="1">x*x</correct>
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation>掛け算の演算子は'*'である．</explanation>
+  </item>
+</program_set>

@@ -1,0 +1,22 @@
+#include <stdio.h>
+	
+	int main()
+	{
+		struct shiken
+		{
+			int kokugo;
+			int sansu;
+		};
+		struct student
+		{
+			char name[20];
+			char sei[3];
+			struct shiken kekka;
+		};
+		struct student x = {"山田太郎", "男", {100, 80}};
+	
+		printf("名前 %s 性 %s 国語 %d 算数 %d\n",
+			   x.name, x.sei, x.kekka.kokugo, x.kekka.sansu);
+	
+		return 0;
+	}

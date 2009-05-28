@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="assignment">
+<item id="1" type="fill_in_the_blank"><question>
+以下は2の2乗を計算し出力するプログラムである．
+空欄に当てはまるものを答えよ．<br/><br/>
+<pre>
+int main(){
+  int x= [ A ] ;
+x= [ B ] ;
+        printf("2*2=%d/n",x);
+        }
+
+</pre>
+</question>
+<response id="1">=[A]</response>
+<response id="2">=[B]</response>
+<evaluate><function></function><correct id="1">2</correct>
+<correct id="2">x*x</correct>
+<score>10</score><weight/><point>10</point></evaluate><explanation>乗算の演算子は*である．</explanation></item>
+</program_set>

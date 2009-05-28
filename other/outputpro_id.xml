@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pro">
+<item id="id" type="fill_in_the_blank"><question>
+<pre>
+void main(){
+  int a[10]={5,4,9,1,10,7,8,3,2,6};
+int i;
+for(i=0;i&lt;10;i++)[ A ]("%d  ",a[i]);
+        }
+
+</pre>
+</question>
+<response id="1">=[A]</response>
+<evaluate><function></function><correct id="1">printf</correct>
+<score>2</score><weight/><point>10</point></evaluate><explanation>int型のフォーマットは%dですよ。</explanation></item>
+</program_set>

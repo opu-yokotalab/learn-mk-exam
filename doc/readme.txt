@@ -1,5 +1,3 @@
-#output.xml
-表示ができるようにおねがいします。
 
 #blank
 antlrフォルダ	…ANTLRをDLしてPATHを通せば不要
@@ -8,6 +6,9 @@ CtreeLexer.java	…字句解析をしているところ(ANTLRで生成)
 CtreeParser.java	…構文解析をしているところ(同上)
 Dom.java	…木の操作をしているところ(シンボルテーブル割り当てと問題作成)
 Make.java	…インタフェースとメイン操作を記述しているところ(swingで)。実質main
+			…（ＤＢへのアクセス）、ＸＭＬへの書き込み、ソケット通信などはこの関数
+			…ソケット通信での接続先（emerald.c.oka-pu.ac.jp,3000)
+			…ＤＢへのアクセスでの接続先（ホスト：ローカル,ＤＢ名：problem_DB,テーブル名:question)
 QuestionMap.java	…作った問題を保持しているところ
 SymbolTable.java	…シンボルテーブルの情報を保持しているところ
 XSLT.java	…xslt変換を行っているところ

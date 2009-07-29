@@ -9,6 +9,7 @@ import java.util.*;
 import org.w3c.dom.*;
 import javax.swing.border.*;
 import java.sql.*;
+import java.net.*;
 
 /*mainな処理をするクラス。
   レイアウトの作成と他クラスの呼び出しをする。
@@ -552,6 +553,17 @@ class Make extends JFrame implements ActionListener {
       
 
   void makeOutputFile(int number){
+	
+	/*問題DBのあるサーバ・ポート指定*/
+	  String host = "emerald.c.oka-pu.ac.jp";
+	  int port = 3000;
+	  
+	//テストデータ
+	  int id= 1;	// id
+	  String group=new String("Sample");	// グループ
+	  String source = new String ("<xml><program_set id=\"sample\"><item id=\"1\"></item></program_set></xml>");
+
+	  
     /*以下出力*/
 	/*ファイルへ出力*/
     StringBuffer sb = new StringBuffer();
@@ -601,31 +613,65 @@ class Make extends JFrame implements ActionListener {
       fw.write(sb.toString());
       fw.close();
       
-      try{
-    	  //DBへの記述
-    	  /*ドライバクラスをロード*/
-    	  Class.forName("org.postgresql.Driver");
-    	  //DBへ接続
-    	  Connection con = DriverManager.getConnection("jdbc:postgresql:problem_DB","postgres","postgres");
-    	  //System.out.println("DB conect OK");//DB接続チェック
-    	  //ステートメントオブジェクトを生成
-    	  Statement stmt = con.createStatement();
-    	  //SQL文を作成
-    	  String sql = "INSERT INTO question VALUES('" + (String)QM.id.get(number) + "','" + (String)QM.program_set.get(number) + "','" + sb.toString() + "');";
-    	  //System.out.println(sql);//クエリチェック出力
-    	  //クエリを実行
-    	  int result = stmt.executeUpdate(sql);
-    	  //DBからの切断
-    	  stmt.close();
-    	  con.close();
-      }catch (Exception e){
-    	  e.printStackTrace();
-      }
-     
     }catch(IOException ex){
-      System.out.println("IOエラーが発生しました");
-    }
+    	System.out.println("IOエラーが発生しました");
+    	}
+    /*try{
+    	//DBへの記述（ローカル）
+    	//ドライバクラスをロード
+    	Class.forName("org.postgresql.Driver");
+    	//DBへ接続
+    	Connection con = DriverManager.getConnection("jdbc:postgresql:problem_DB","postgres","postgres");
+    	//System.out.println("DB conect OK");//DB接続チェック
+    	//ステートメントオブジェクトを生成
+    	Statement stmt = con.createStatement();
+    	//SQL文を作成
+    	String sql = "INSERT INTO question VALUES('" + (String)QM.id.get(number) + "','" + (String)QM.program_set.get(number) + "','" + sb.toString() + "');";
+    	//System.out.println(sql);//クエリチェック出力
+    	//クエリを実行
+    	int result = stmt.executeUpdate(sql);
+    	//DBからの切断
+    	stmt.close();
+    	con.close();
+    	//	DBアクセス時の例外処理
+      	}catch (Exception e){
+      		e.printStackTrace();
+      	}	
+     */ 
+      	//ソケット通信部
+    try{
+        // ソケット接続
+  	  System.out.println("Start!!");//接続開始確認用
+  	  
+        Socket soc=new Socket(host,port);
+        DataOutputStream os=new DataOutputStream(soc.getOutputStream());
+        DataInputStream is=new DataInputStream(soc.getInputStream());
+
+        // サーバーへ数値を送信
+        os.writeInt(id);		// id を送信
+        os.writeUTF(group);	// group を送信
+        os.writeUTF(source);  // sourceを送信
+
+        // サーバーからの結果を受信
+        //double r=is.readDouble();
+
+        // 結果を表示
+        System.out.println("End!!");//転送終了
+
+        // ソケットを閉じる
+        soc.close();
+      }
+      //例外処理
+      catch(UnknownHostException e){
+        System.err.println("Unknown host: "+host);
+      }
+      catch(IOException e){
+        System.err.println("IO error: "+e);
+      }
+    //ソケット通信部終わり
   }
+  
+  //エスケープ文字の変換
   String convertforXML(String str){
     str = str.replaceAll("&","&amp;");
     str = str.replaceAll("<","&lt;");

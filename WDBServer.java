@@ -34,7 +34,7 @@ public class WDBServer extends Thread {
 
       // データを受信
 
-      int id = is.readInt();
+      String id = is.readUTF();
       String program_set = is.readUTF();
       String source = is.readUTF();
 

@@ -648,9 +648,13 @@ class Make extends JFrame implements ActionListener {
         DataInputStream is=new DataInputStream(soc.getInputStream());
 
         // サーバーへ数値を送信
-        os.writeInt(id);		// id を送信
-        os.writeUTF(group);	// group を送信
-        os.writeUTF(source);  // sourceを送信
+        //os.writeInt(id);		// id を送信（テスト用）
+        //os.writeUTF(group);	// group を送信(テスト用）
+        //os.writeUTF(source);  // sourceを送信(テスト用）
+        
+        os.writeUTF((String)QM.id.get(number));//idを送信
+        os.writeUTF((String)QM.program_set.get(number));//program_setを送信
+        os.writeUTF(sb.toString());//sourceを送信
 
         // サーバーからの結果を受信
         //double r=is.readDouble();

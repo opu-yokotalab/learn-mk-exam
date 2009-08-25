@@ -318,7 +318,7 @@ class Dom{
     
   }
 
-
+/*createblank(››,ALL)‚Ìˆ—*/
   boolean createblank(String nodename,int appointment){
     NodeList list = root.getElementsByTagName(nodename);
     if(list.getLength() !=0){
@@ -338,6 +338,7 @@ class Dom{
     return true;
   }
 
+  /*crateblank(››,[SELECT|BOOL],[rootonly,self,leftchild,rightchild,conditiononly,statementonly])‚Ìˆ—*/
   boolean createblank(String nodename,int appointment,int contains){
     NodeList list = root.getElementsByTagName(nodename);
       if(appointment == SELECT || appointment == BOOL){
@@ -405,6 +406,7 @@ class Dom{
     return false;
   }
 
+  /**/
   boolean createblank(String rootnode,String nodename,int appointments,int condition){
     ArrayList rootlist = getElement(rootnode);
     boolean torf = false;
@@ -526,7 +528,9 @@ class Dom{
 
 
      
-     
+     /*nodename‚Ì—v‘f‚Ì’†g‚ª‚ ‚ê‚Îtrue
+      * ŠÖ”–¼iFNAME)‚¾‚ÆŽq—v‘f‚Ì’†‚Énodename‚Æˆê’v‚·‚é‚à‚Ì‚ð’T‚µ
+      * ˆê’v‚·‚é‚à‚Ì‚ª‚ ‚ê‚Îtrue@*/
   boolean bool(int cond,String nodename){
     if(cond == exist){
       if(root.getElementsByTagName(nodename).getLength()>0)

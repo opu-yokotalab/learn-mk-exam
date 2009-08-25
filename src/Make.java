@@ -60,20 +60,31 @@ class Make extends JFrame implements ActionListener {
   JScrollPane questionScroll;
 
   JButton config;
+  
+  //入力項目定義
   JTextArea question;
-  JTextArea sentence;
+  //JTextArea sentence;
+  JTextField sentence;
   JTextField program_set;
   JTextField id;
-  JTextArea hints;
+  //JTextArea hints;
+  JTextField hints;
   JTextField function;
   JTextField score;
   JTextField weight;
   JTextField point;
-  JTextArea explanation;
+  //JTextArea explanation;
+  JTextField explanation;
   
   JCheckBox[] rbutton;
   JCheckBox[] sectiontitle;
   JCheckBox[][] subsectionTitle;
+  
+  //createblankのコンボボックス定義
+  JTextField nodename;
+  JComboBox appointcomb;
+  JComboBox conditcomb;
+  int cmb_i,cmb_j;
 
   int sectioncount ;
   int[] subsectioncount ; 
@@ -133,15 +144,22 @@ class Make extends JFrame implements ActionListener {
       FileReader fr = new FileReader(new File("section.ini"));
       BufferedReader br = new BufferedReader(fr);
       sectioncount = Integer.parseInt(br.readLine());
+      
+      //System.out.println("sectioncount = "+sectioncount);//デバグ出力sectioncount
+      
       subsectioncount = new int[sectioncount];
       sectiontitleString = new String[sectioncount];
       subsectionTitleString = new String[sectioncount][];
       for(int i=0 ; i<sectioncount ; i++){
         subsectioncount[i] = Integer.parseInt(br.readLine());
+        
+        //System.out.println("subsectioncount[" +i+ "] = " + subsectioncount[i]);//デバグ出力subsectioncount
+        
         sectiontitleString[i] = br.readLine();
         subsectionTitleString[i] = new String[subsectioncount[i]];
         for(int j=0 ; j<subsectioncount[i] ; j++){
           subsectionTitleString[i][j]=br.readLine();
+          //System.out.println("subsectionTitle["+j+"] = "+subsectionTitleString[i][j]);//デバグ出力subsectiontitle
         }
       }
     }catch(IOException ex){
@@ -253,7 +271,7 @@ class Make extends JFrame implements ActionListener {
     subsubright2.setLayout(new BoxLayout(subsubright2,BoxLayout.Y_AXIS));
     subrightPanel2.setLayout(new BoxLayout(subrightPanel2,BoxLayout.Y_AXIS));
 
-    /*設定画面*/
+    /*問題の項目設定画面*/
     subsubright2.setPreferredSize(new Dimension(300,400));
     GridBagLayout configlayout = new GridBagLayout();
     subsubright2.setLayout(configlayout);
@@ -261,22 +279,45 @@ class Make extends JFrame implements ActionListener {
     GridBagConstraints configgbc = new GridBagConstraints();
     configgbc.fill = GridBagConstraints.BOTH;
 
+    /*設定エリアの各項目の長さ設定*/
     question = new JTextArea();
     questionScroll = new JScrollPane(question);
     questionScroll.setPreferredSize(new Dimension(300,200));
     JTextArea answer = new JTextArea();
-    sentence = new JTextArea(2,15);
-    JScrollPane sentenceScroll = new JScrollPane(sentence);
+    
+    /*問題文*/
+    //sentence = new JTextArea(2,15);//問題文複数行（表示でつぶれる）
+    //JScrollPane sentenceScroll = new JScrollPane(sentence);
+    sentence = new JTextField(20);
+    
+    /*プログラムセット（グループ）*/
     program_set = new JTextField(10); 
+    
+    /*ID*/
     id = new JTextField(10);
-    hints = new JTextArea(2,15);
-    JScrollPane hintsScroll = new JScrollPane(hints);
+    
+    /*ヒント*/
+    //hints = new JTextArea(2,15);//ヒント複数行（表示でつぶれる）
+    //JScrollPane hintsScroll = new JScrollPane(hints);
+    hints = new JTextField(20);
+    
+    /**/
     function = new JTextField(10);
+    
+    /**/
     score = new JTextField(10);
+    
+    /**/
     weight = new JTextField(10);
+    
+    /**/
     point = new JTextField(10);
-    explanation = new JTextArea(2,15);
-    JScrollPane explanationScroll = new JScrollPane(explanation);
+    
+    /*解説*/
+    //explanation = new JTextArea(2,15); //解説複数行（表示でつぶれる）
+    //JScrollPane explanationScroll = new JScrollPane(explanation);
+    explanation = new JTextField(20);
+    
     JPanel[] panel = new JPanel[9];
     GridBagLayout panellayout = new GridBagLayout();
     for(int i=0 ; i<9 ; i++){
@@ -291,11 +332,13 @@ class Make extends JFrame implements ActionListener {
     panelgbc.weightx = 1.0d;
     panelgbc.weighty = 1.0d;
 
-    
+    //設定エリアをパネルに追加
     JLabel[] label = new JLabel[9];
     label[0] = new JLabel("問題文:");
-    panellayout.setConstraints(sentenceScroll,panelgbc);
-    panel[0].add(sentenceScroll);
+    //panellayout.setConstraints(sentenceScroll,panelgbc);
+    //panel[0].add(sentenceScroll);
+    panellayout.setConstraints(sentence,panelgbc);//test
+    panel[0].add(sentence);//test
     label[1] = new JLabel("program_set:");
     panellayout.setConstraints(program_set,panelgbc);
     panel[1].add(program_set);
@@ -303,8 +346,10 @@ class Make extends JFrame implements ActionListener {
     panellayout.setConstraints(id,panelgbc);
     panel[2].add(id);
     label[3] = new JLabel("ヒント:");
-    panellayout.setConstraints(hintsScroll,panelgbc);
-    panel[3].add(hintsScroll);
+    //panellayout.setConstraints(hintsScroll,panelgbc);
+    //panel[3].add(hintsScroll);
+    panellayout.setConstraints(hints,panelgbc);//test
+    panel[3].add(hints);//test
     label[4] = new JLabel("function:");
     panellayout.setConstraints(function,panelgbc);
     panel[4].add(function);
@@ -318,8 +363,11 @@ class Make extends JFrame implements ActionListener {
     panellayout.setConstraints(point,panelgbc);
     panel[7].add(point);
     label[8] = new JLabel("解説:");
-    panellayout.setConstraints(explanationScroll,panelgbc);
-    panel[8].add(explanationScroll);
+    //panellayout.setConstraints(explanationScroll,panelgbc);
+    //panel[8].add(explanationScroll);
+    panellayout.setConstraints(explanation,panelgbc);//test
+    panel[8].add(explanation);//test
+    
     subrightPanel2.add(questionScroll);
     for(int i=0 ; i<9 ; i++){
       configgbc.gridx = 0;
@@ -396,6 +444,7 @@ class Make extends JFrame implements ActionListener {
     });
   }
   
+  //ファイル読み込み部
   public void actionPerformed(ActionEvent e) {//イベント発生
     if (e.getActionCommand() == "LOAD" ) {//ファイルの展開
       QM = new QuestionMap(sectioncount,subsectioncount);
@@ -551,7 +600,7 @@ class Make extends JFrame implements ActionListener {
     }
   }
       
-
+  //出力部分（ファイル書き込み、DB書き込み）
   void makeOutputFile(int number){
 	
 	/*問題DBのあるサーバ・ポート指定*/
@@ -559,9 +608,9 @@ class Make extends JFrame implements ActionListener {
 	  int port = 3000;
 	  
 	//テストデータ
-	  int id= 1;	// id
-	  String group=new String("Sample");	// グループ
-	  String source = new String ("<xml><program_set id=\"sample\"><item id=\"1\"></item></program_set></xml>");
+	  //int id= 1;	// id
+	  //String group=new String("Sample");	// グループ
+	  //String source = new String ("<xml><program_set id=\"sample\"><item id=\"1\"></item></program_set></xml>");
 
 	  
     /*以下出力*/
@@ -685,57 +734,103 @@ class Make extends JFrame implements ActionListener {
   }
 
   void putSection(){
-    GridBagLayout gblayout = new GridBagLayout();
-    subcenterPanel2.setLayout(gblayout);
-    GridBagConstraints gbconst = new GridBagConstraints();
-    sectiontitle = new JCheckBox[sectioncount];
-    subsectionTitle = new JCheckBox[sectioncount][];
-    for(int i=0 ; i<sectioncount ; i++){
-      sectiontitle[i] = new JCheckBox(sectiontitleString[i]);
-      subsectionTitle[i] = new JCheckBox[subsectioncount[i]];
-      for(int j=0; j<subsectioncount[i] ; j++){
-        subsectionTitle[i][j] = new JCheckBox(subsectionTitleString[i][j]);
-      }
-    }
-    JPanel[] setSectionLabel = new JPanel[sectioncount*2];
+	try{
+		//ルールのチェックボックス生成
+		GridBagLayout gblayout = new GridBagLayout();
+		subcenterPanel2.setLayout(gblayout);
+		GridBagConstraints gbconst = new GridBagConstraints();
+		sectiontitle = new JCheckBox[sectioncount];
+		subsectionTitle = new JCheckBox[sectioncount][];
+		
+    	//CREATEBLANK用の定義
+    	String[] appoint = {"ALL","SELECT","BOOL"};
+    	String[] condit = {"rootonly","self","leftchild","rightchild","conditiononly","statementonly"};
+    	//nodenameのTEXTFIELD
+    	nodename = new JTextField(10);
+    	//appointmentのCOMBOBOX
+    	appointcomb = new JComboBox(appoint);
+    	appointcomb.setPreferredSize(new Dimension(20, 20));
+    	//conditionのCOMBOBOX
+    	conditcomb = new JComboBox(condit);
+    	conditcomb.setPreferredSize(new Dimension(20,20));
+		
+		for(int i=0 ; i<sectioncount ; i++){
+			sectiontitle[i] = new JCheckBox(sectiontitleString[i]);
+			subsectionTitle[i] = new JCheckBox[subsectioncount[i]];
+			for(int j=0; j<subsectioncount[i] ; j++){
+    	  
+				if(subsectionTitleString[i][j].equals("choise")){
+    			System.out.println("check OK!!");
 
-    int sum=0;
-    for(int i=0 ; i<sectioncount ; i++){
-      setSectionLabel[i*2] = new JPanel();
-      gbconst.fill = GridBagConstraints.BOTH;
-      gbconst.gridx=0;
-      gbconst.gridy=i;
-      gbconst.gridwidth = 1;
-      gbconst.gridheight = 1;
-      setSectionLabel[i*2].add(sectiontitle[i]);
-      gblayout.setConstraints(setSectionLabel[i*2],gbconst);
-      subcenterPanel2.add(setSectionLabel[i*2]);
-      setSectionLabel[i*2].setBorder(new LineBorder(Color.black, 2));
-      setSectionLabel[i*2+1] = new JPanel();
-      setSectionLabel[i*2+1].setLayout(new BoxLayout(setSectionLabel[i*2+1], BoxLayout.Y_AXIS));
-      for(int j=0 ; j<subsectioncount[i] ; j++){
-        setSectionLabel[i*2+1].add(subsectionTitle[i][j]);
-      }
-      gbconst.gridx=1;
-      gbconst.gridy=i;
-      gblayout.setConstraints(setSectionLabel[i*2+1],gbconst);
-      subcenterPanel2.add(setSectionLabel[i*2+1]);
-      setSectionLabel[i*2+1].setBorder(new LineBorder(Color.black, 2));
+    			subsectionTitle[i][j] = new JCheckBox("createblank");
+    			cmb_i = i;
+    			cmb_j = j;
+    			}
+    			else{  
+					subsectionTitle[i][j] = new JCheckBox(subsectionTitleString[i][j]);
+				}
+			}
+		}
+    
+    	JPanel[] setSectionLabel = new JPanel[sectioncount*2];
+    	int sum=0,loop1,loop2;
+    	for(int i=0 ; i<sectioncount ; i++){
+    		loop1 = i*2;
+    		setSectionLabel[loop1] = new JPanel();
+    		gbconst.fill = GridBagConstraints.BOTH;
+    		gbconst.gridx=0;
+    		gbconst.gridy=i;
+    		gbconst.gridwidth = 1;
+    		gbconst.gridheight = 1;
+    		setSectionLabel[loop1].add(sectiontitle[i]);
+    		gblayout.setConstraints(setSectionLabel[loop1],gbconst);
+    		subcenterPanel2.add(setSectionLabel[loop1]);
+    		setSectionLabel[loop1].setBorder(new LineBorder(Color.black, 2));
+    		loop2 = loop1 + 1;
+    		setSectionLabel[loop2] = new JPanel();
+    		setSectionLabel[loop2].setLayout(new BoxLayout(setSectionLabel[loop2], BoxLayout.Y_AXIS));
+    		//リストへサブセクション追加
+    		for(int j=0 ; j<subsectioncount[i] ; j++){
+    			if(cmb_i == i && cmb_j == j){
+    				System.out.println("test001");
+    				setSectionLabel[loop2].add(subsectionTitle[i][j]);
+    				setSectionLabel[loop2].add(nodename);
+    				setSectionLabel[loop2].add(appointcomb);
+    				setSectionLabel[loop2].add(conditcomb);
+    			}
+    			else{
+    				setSectionLabel[loop2].add(subsectionTitle[i][j]);
+    			}
+    		}
+      
+    		gbconst.gridx=1;
+    		gbconst.gridy=i;
+    		gblayout.setConstraints(setSectionLabel[loop2],gbconst);
+    		subcenterPanel2.add(setSectionLabel[loop2]);
+    		setSectionLabel[loop2].setBorder(new LineBorder(Color.black, 2));
+    	}
+    	
+    	JButton next = new JButton("決定");
+    	next.setActionCommand("NEXT");
+    	next.addActionListener(this);
+    	gbconst.gridx=1;
+    	gbconst.gridy=sectioncount+1;
+    	gblayout.setConstraints(next,gbconst);
+    	subcenterPanel2.add(next);
+    } catch(Exception e) {
+    	System.out.println("例外：" + e);
     }
-    JButton next = new JButton("決定");
-    next.setActionCommand("NEXT");
-    next.addActionListener(this);
-    gbconst.gridx=1;
-    gbconst.gridy=sectioncount+1;
-    gblayout.setConstraints(next,gbconst);
-    subcenterPanel2.add(next);
-  }
-
+  }	
+  
   /*以下出題方針(問題作成)*/
   void makeBlankChecker(){
+	try{
     Dom domtree = new Dom(inp);
     /*1.1基本構造*/
     if(subsectionTitle[0][0].isSelected() || sectiontitle[0].isSelected()){
+    	/*有安テスト*/
+    	if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self))
+    		QM.qtype[0][0]++;
 
     }
     /*1.2定数、変数、データ型*/
@@ -932,13 +1027,110 @@ class Make extends JFrame implements ActionListener {
     }
     /*5.4プロトタイプ宣言*/
     if(subsectionTitle[4][3].isSelected() || sectiontitle[4].isSelected()){
+   	if(domtree.createblank("IF",Dom.ALL))
+            QM.qtype[4][3]++;
     }
     /*5.5ライブラリ*/
     if(subsectionTitle[4][4].isSelected() || sectiontitle[4].isSelected()){
+
+    	if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly))
+            QM.qtype[4][4]++;
     }
     /*5.6記憶クラスとスコープ*/
     if(subsectionTitle[4][5].isSelected() || sectiontitle[4].isSelected()){
+    	if(domtree.createblank("ARGUMENTS","FORMAT",Dom.ALL,Dom.exist,"%s"))
+            QM.qtype[4][5]++;
     }
-  }
+    /*6自作ルール1*/
+    if(subsectionTitle[5][0].isSelected() || sectiontitle[5].isSelected()){
+    	
+    	String n_name;
+    	//nodenameの中身を大文字に変換
+    	n_name = nodename.getText().toUpperCase();
+    	
+    	//createblank(nodename,ALL)
+    	if(appointcomb.getSelectedItem()=="ALL"){
+    		/*System.out.println(nodename.getText());
+    		System.out.println(domtree.createblank(n_name,Dom.ALL)); //デバグ用出力　*/
+    		//if(domtree.createblank(nodename.getText().toUpperCase(),Dom.ALL)){
+    		if(domtree.createblank(n_name,Dom.ALL)){
+    			QM.qtype[5][0]++;
+    		}
+    	}
+    	//createblank(nodename,SELECT,condition)
+    	else if(appointcomb.getSelectedItem()=="SELECT"){
+    		
+    		if(conditcomb.getSelectedItem()=="rootonly"){/*動きがあやしい（一部分消える）*/
+        		//System.out.println(domtree.createblank(n_name,Dom.SELECT,Dom.rootonly));//デバグ用
+    			//if(domtree.createblank(nodename.getText(),Dom.SELECT,Dom.rootonly)){
+        		if(domtree.createblank(n_name,Dom.SELECT,Dom.rootonly)){
+    				QM.qtype[5][0]++;
+    			}
+    		
+    		}else if (conditcomb.getSelectedItem()=="self"){
+    			//System.out.println(domtree.createblank(n_name,Dom.SELECT,Dom.self));//デバグ用
+    			//if(domtree.createblank(nodename.getText(),Dom.SELECT,Dom.self))
+    			if(domtree.createblank(n_name,Dom.SELECT,Dom.self)){
+    				QM.qtype[5][0]++;
+    			}
+    		}else if (conditcomb.getSelectedItem()=="leftchild"){/*動きがあやしい（一部分消える）*/
+    			//System.out.println(domtree.createblank(n_name,Dom.SELECT,Dom.leftchild));//デバグ用
+    			//if(domtree.createblank(nodename.getText(),Dom.SELECT,Dom.leftchild)){
+    			if(domtree.createblank(n_name,Dom.SELECT,Dom.leftchild)){
+    				QM.qtype[5][0]++;
+    			}
+    		}else if (conditcomb.getSelectedItem()=="rightchild"){/*動きがあやしい*/
+    			//System.out.println(domtree.createblank(n_name,Dom.SELECT,Dom.rightchild));//デバグ用
+    			//if(domtree.createblank(nodename.getText(),Dom.SELECT,Dom.rightchild)){
+    			if(domtree.createblank(n_name,Dom.SELECT,Dom.rightchild)){
+    				QM.qtype[5][0]++;
+    			}
+    		}else if (conditcomb.getSelectedItem()=="conditiononly"){
+    			//System.out.println(domtree.createblank(n_name,Dom.SELECT,Dom.conditiononly));//デバグ用
+    			//if(domtree.createblank(nodename.getText(),Dom.SELECT,Dom.conditiononly)){
+    			if(domtree.createblank(n_name,Dom.SELECT,Dom.conditiononly)){
+    				QM.qtype[5][0]++;
+    			}
+    		}else if (conditcomb.getSelectedItem()=="statementonly"){/*動きが変*/
+    			//System.out.println(domtree.createblank(n_name,Dom.SELECT,Dom.statementonly));//デバグ用
+    			//if(domtree.createblank(nodename.getText(),Dom.SELECT,Dom.statementonly)){
+    			if(domtree.createblank(n_name,Dom.SELECT,Dom.statementonly)){
+    				QM.qtype[5][0]++;
+    			}
+    		}
+    	}
+    	//createblank(nodename,BOOL,condition)
+    	else {
+    		if(conditcomb.getSelectedItem()=="rootonly"){
+    			if(domtree.createblank(nodename.getText(),Dom.BOOL,Dom.rootonly)){
+    				System.out.println("RUN!!");
+    				QM.qtype[5][0]++;
+    			}
+    		}else if (conditcomb.getSelectedItem()=="self"){
+    			if(domtree.createblank(nodename.getText(),Dom.BOOL,Dom.self))
+    				QM.qtype[5][0]++;
+    		}else if (conditcomb.getSelectedItem()=="leftchild"){
+    			if(domtree.createblank(nodename.getText(),Dom.BOOL,Dom.leftchild))
+    				QM.qtype[5][0]++;
+    		}else if (conditcomb.getSelectedItem()=="rightchild"){
+    			if(domtree.createblank(nodename.getText(),Dom.BOOL,Dom.rightchild))
+    				QM.qtype[5][0]++;
+    		}else if (conditcomb.getSelectedItem()=="conditiononly"){
+    			if(domtree.createblank(nodename.getText(),Dom.BOOL,Dom.conditiononly))
+    				QM.qtype[5][0]++;
+    		}else if (conditcomb.getSelectedItem()=="statementonly"){
+    			if(domtree.createblank(nodename.getText(),Dom.BOOL,Dom.statementonly))
+    				QM.qtype[5][0]++;
+    		}
+    	}
+    	
+    }
+    /*自作ルール2
+    if(subsectionTitle[5][1].isSelected() || sectiontitle[5].isSelected()){
+    }*/
+    } catch(Exception e) {
+    	System.out.println("例外処理：" + e);
+    }
+	}
 
 }

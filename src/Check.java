@@ -23,7 +23,7 @@ class Check{
     sb=sb.append("<?xml version=\"1.0\" encoding=\"shift_JIS\" ?>\n");
     convert(ST.nextToken());
     
-    /*try{  //ファイル名output.xmlで出力(デバッグ用)
+    try{  //ファイル名output.xmlで出力(デバッグ用)
       // Fileオブジェクトの作成
       File file = new File("output.xml");
       // newFile.txtを新規作成する
@@ -34,7 +34,7 @@ class Check{
       fw.close();
     }catch(IOException ex){
       System.out.println("IOエラーが発生しました");
-    }*/
+    }
     
     return new ByteArrayInputStream(sb.toString().getBytes());
   }

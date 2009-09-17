@@ -481,7 +481,7 @@ class Make extends JFrame implements ActionListener {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         CtreeParser parser = new CtreeParser(tokens);
         String Stree = parser.translation_unit().tree.toStringTree();
-        Check ST = new Check(Stree);
+        Check ST = new Check(Stree);//XML化
         inp = ST.toXML();
         layout2 = new GridBagLayout();
         selection = new JPanel();
@@ -829,31 +829,47 @@ class Make extends JFrame implements ActionListener {
     /*1.1基本構造*/
     if(subsectionTitle[0][0].isSelected() || sectiontitle[0].isSelected()){
     	/*有安テスト*/
-    	if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self))
+    	if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self)){
     		QM.qtype[0][0]++;
-
+    	}
+    	else {
+    		System.out.println("Erorr:Can't create question 1.1");
+    	}
     }
     /*1.2定数、変数、データ型*/
-    if(subsectionTitle[0][1].isSelected() || sectiontitle[0].isSelected()){
-
+    if(subsectionTitle[0][1].isSelected() || sectiontitle[0].isSelected()){/*動いてない*/
+    	System.out.println("1.2="+domtree.createblank("ARGUMENT",Dom.SELECT,Dom.rightchild));
+    	if(domtree.createblank("ARGUMENT",Dom.SELECT,Dom.rightchild)){
+    		System.out.println("OK!!!!!");
+    		QM.qtype[0][1]++;
+    	}
+    	else {
+    		System.out.println("Erorr:Can't create question 1.2");
+    	}
     }
     /*1.3printfと書式指定*/
     if(subsectionTitle[0][2].isSelected() || sectiontitle[0].isSelected()){
-      if(domtree.createblank("printf",Dom.SELECT,Dom.self))
+      if(domtree.createblank("printf",Dom.SELECT,Dom.self)){
         QM.qtype[0][2]++;
-      if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"printf"))
+      }
+      if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"printf")){
         QM.qtype[0][2]++;
+      }
     }
     /*2.1scanfとアドレス演算子*/
     if(subsectionTitle[1][0].isSelected() || sectiontitle[1].isSelected()){
-      if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"scanf"))
+      if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"scanf")){
         QM.qtype[1][0]++;
-      if(domtree.createblank("scanf",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("scanf",Dom.SELECT,Dom.self)){
         QM.qtype[1][0]++;
-      if(domtree.createblank("AMP",Dom.ALL))
+      }
+      if(domtree.createblank("AMP",Dom.ALL)){
         QM.qtype[1][0]++;
-      if(domtree.createblank("AMP",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("AMP",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][0]++;
+      }
     }
     /*2.2式*/
     if(subsectionTitle[1][1].isSelected() || sectiontitle[1].isSelected()){
@@ -863,155 +879,227 @@ class Make extends JFrame implements ActionListener {
     }
     /*2.4代入演算子*/
     if(subsectionTitle[1][3].isSelected() || sectiontitle[1].isSelected()){
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.leftchild))
+      }
+      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.leftchild)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rightchild))
+      }
+      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rightchild)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.self)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("PLUSE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("PLUSE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("PLUSE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("PLUSE",Dom.SELECT,Dom.self)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("MINUSE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("MINUSE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("MINUSE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("MINUSE",Dom.SELECT,Dom.self)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("RESTE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("RESTE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("RESTE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("RESTE",Dom.SELECT,Dom.self)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("DIVE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("DIVE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("DIVE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("DIVE",Dom.SELECT,Dom.self)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("MULTIE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("MULTIE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][3]++;
-      if(domtree.createblank("MULTIE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("MULTIE",Dom.SELECT,Dom.self)){
         QM.qtype[1][3]++;
+      }
     }
     /*2.5インクリメント、デクリメント演算子*/
     if(subsectionTitle[1][4].isSelected() || sectiontitle[1].isSelected()){
-      if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][4]++;
-      if(domtree.createblank("UNARYMINUS",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("UNARYMINUS",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][4]++;
-      if(domtree.createblank("POSTFIXPLUS",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("POSTFIXPLUS",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][4]++;
-      if(domtree.createblank("POSTFIXMINUS",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("POSTFIXMINUS",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][4]++;
+      }
     }
     /*3.1比較演算子と等価演算子*/
     if(subsectionTitle[2][0].isSelected() || sectiontitle[2].isSelected()){
-      if(domtree.createblank("EQUAL",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("EQUAL",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("EQUAL",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("EQUAL",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("NOTE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("NOTE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("NOTE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("NOTE",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("FEWER",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("FEWER",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("FEWER",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("FEWER",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("GREATER",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("GREATER",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("GREATER",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("GREATER",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("FORE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("FORE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("FORE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("FORE",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("BORE",Dom.SELECT,Dom.rootonly))
+      }
+      if(domtree.createblank("BORE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
-      if(domtree.createblank("BORE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("BORE",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
+      }
     }
     /*3.2if文*/
     if(subsectionTitle[2][1].isSelected() || sectiontitle[2].isSelected()){
-      if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][1]++;
-      if(domtree.createblank("IF",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("IF",Dom.SELECT,Dom.self)){
         QM.qtype[2][1]++;
-      if(domtree.createblank("IF",Dom.ALL))
+      }
+      if(domtree.createblank("IF",Dom.ALL)){
         QM.qtype[2][1]++;
-      if(domtree.createblank("IF",Dom.SELECT,Dom.conditiononly))
+      }
+      if(domtree.createblank("IF",Dom.SELECT,Dom.conditiononly)){
         QM.qtype[2][1]++;
-      if(domtree.createblank("IF",Dom.SELECT,Dom.statementonly))
+      }
+      if(domtree.createblank("IF",Dom.SELECT,Dom.statementonly)){
         QM.qtype[2][1]++;
-      if(domtree.createblank("ELSE",Dom.ALL))
+      }
+      if(domtree.createblank("ELSE",Dom.ALL)){
         QM.qtype[2][1]++;
-      if(domtree.createblank("ELSE",Dom.SELECT,Dom.statementonly))
+      }
+      if(domtree.createblank("ELSE",Dom.SELECT,Dom.statementonly)){
         QM.qtype[2][1]++;
+      }
     }
     /*3.3while文*/
     if(subsectionTitle[2][2].isSelected() || sectiontitle[2].isSelected()){
-      if(domtree.createblank("WHILE",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("WHILE",Dom.SELECT,Dom.rootonly)){
+    	System.out.println("Output1");
         QM.qtype[2][2]++;
-      if(domtree.createblank("WILE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("WHILE",Dom.SELECT,Dom.self)){
+    	System.out.println("Output2");
         QM.qtype[2][2]++;
-      if(domtree.createblank("WHILE",Dom.ALL))
+      }
+      if(domtree.createblank("WHILE",Dom.ALL)){
+    	System.out.println("Output3");
         QM.qtype[2][2]++;
-      if(domtree.createblank("WHILE",Dom.SELECT,Dom.statementonly))
-        QM.qtype[2][2]++;
-    }
+      }
+      if(domtree.createblank("WHILE",Dom.SELECT,Dom.statementonly)){
+    	System.out.println("Output4");
+    	QM.qtype[2][2]++;
+      }
+      if(domtree.createblank("POSTFIXPLUS",Dom.SELECT,Dom.self)){
+    	  System.out.println("Output5");
+    	  QM.qtype[2][2]++;
+      }
+      if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self)){/*動いてない？？*/
+    	System.out.println("Output6");
+    	QM.qtype[2][2]++;
+      }
+     }
     /*3.4for文*/
     if(subsectionTitle[2][3].isSelected() || sectiontitle[2].isSelected()){
-      if(domtree.createblank("FOR",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("FOR",Dom.SELECT,Dom.rootonly)){
+    	QM.qtype[2][3]++;
+      }
+      if(domtree.createblank("FOR",Dom.SELECT,Dom.self)){
         QM.qtype[2][3]++;
-      if(domtree.createblank("FOR",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("FOR",Dom.ALL)){
         QM.qtype[2][3]++;
-      if(domtree.createblank("FOR",Dom.ALL))
+      }
+      if(domtree.createblank("FOR",Dom.SELECT,Dom.statementonly)){
         QM.qtype[2][3]++;
-      if(domtree.createblank("FOR",Dom.SELECT,Dom.statementonly))
-        QM.qtype[2][3]++;
+      }
     }
     /*3.5do-while文*/
     if(subsectionTitle[2][4].isSelected() || sectiontitle[2].isSelected()){
-      if(domtree.createblank("DOWHILE",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("DOWHILE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][4]++;
-      if(domtree.createblank("DOWHILE",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("DOWHILE",Dom.SELECT,Dom.self)){
         QM.qtype[2][4]++;
-      if(domtree.createblank("DOWHILE",Dom.ALL))
+      }
+      if(domtree.createblank("DOWHILE",Dom.ALL)){
         QM.qtype[2][4]++;
-      if(domtree.createblank("DOWHILE",Dom.SELECT,Dom.statementonly))
+      }
+      if(domtree.createblank("DOWHILE",Dom.SELECT,Dom.statementonly)){
         QM.qtype[2][4]++;
+      }
     }
     /*3.6switch*/
     if(subsectionTitle[2][5].isSelected() || sectiontitle[2].isSelected()){
-      if(domtree.createblank("SWITCH",Dom.SELECT,Dom.rootonly))
+      if(domtree.createblank("SWITCH",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][5]++;
-      if(domtree.createblank("SWITCH",Dom.SELECT,Dom.self))
+      }
+      if(domtree.createblank("SWITCH",Dom.SELECT,Dom.self)){
         QM.qtype[2][5]++;
-      if(domtree.createblank("SWITCH",Dom.ALL))
+      }
+      if(domtree.createblank("SWITCH",Dom.ALL)){
         QM.qtype[2][5]++;
-      if(domtree.createblank("SWITCH",Dom.SELECT,Dom.statementonly))
+      }
+      if(domtree.createblank("SWITCH",Dom.SELECT,Dom.statementonly)){
         QM.qtype[2][5]++;
+      }
     }
     /*4.1配列と配列の初期化*/
     if(subsectionTitle[3][0].isSelected() || sectiontitle[3].isSelected()){
-      if(domtree.createblank("DECLARATOR","ARRAY",Dom.ALL,Dom.haschild))
+      if(domtree.createblank("DECLARATOR","ARRAY",Dom.ALL,Dom.haschild)){
         QM.qtype[3][0]++;
-      if(domtree.createblank("EXPRESSION","ARRAY",Dom.ALL,Dom.haschild))
+      }
+      if(domtree.createblank("EXPRESSION","ARRAY",Dom.ALL,Dom.haschild)){
         QM.qtype[3][0]++;
-      if(domtree.createblank("FOR","PARENTHESIS",Dom.ALL,Dom.exist,"ARRAY"))
+      }
+      if(domtree.createblank("FOR","PARENTHESIS",Dom.ALL,Dom.exist,"ARRAY")){
         QM.qtype[3][0]++;
-      if(domtree.createblank("ARGUMENTS","FORMAT",Dom.ALL,Dom.exist,"ARRAY"))
+      }
+      if(domtree.createblank("ARGUMENTS","FORMAT",Dom.ALL,Dom.exist,"ARRAY")){
         QM.qtype[3][0]++;
+      }
     }
     /*4.2文字型配列*/
     if(subsectionTitle[3][1].isSelected() || sectiontitle[3].isSelected()){
-      if(domtree.createblank("DECLARATOR","ARRAY",Dom.ALL,Dom.haschild))
+      if(domtree.createblank("DECLARATOR","ARRAY",Dom.ALL,Dom.haschild)){
         QM.qtype[3][1]++;
-      if(domtree.createblank("DECLARATION","TYPE",Dom.ALL,Dom.exist,"ARRAY"))
+      }
+      if(domtree.createblank("DECLARATION","TYPE",Dom.ALL,Dom.exist,"ARRAY")){
         QM.qtype[3][1]++;
+      }
       //if(domtree.createblank("DECLARATOR","CONSTANT",Dom.ALL,Dom.exist,"\'\\0\'"))
       //  QM.qtype[3][1]++;
-      if(domtree.createblank("ARGUMENTS","FORMAT",Dom.ALL,Dom.exist,"%s"))
+      if(domtree.createblank("ARGUMENTS","FORMAT",Dom.ALL,Dom.exist,"%s")){
         QM.qtype[3][1]++;
+      }
     }
     /*4.3多次元配列*/
     if(subsectionTitle[3][2].isSelected() || sectiontitle[3].isSelected()){
@@ -1027,19 +1115,22 @@ class Make extends JFrame implements ActionListener {
     }
     /*5.4プロトタイプ宣言*/
     if(subsectionTitle[4][3].isSelected() || sectiontitle[4].isSelected()){
-   	if(domtree.createblank("IF",Dom.ALL))
-            QM.qtype[4][3]++;
+    	if(domtree.createblank("IF",Dom.ALL)){
+    		QM.qtype[4][3]++;
+    	}
     }
     /*5.5ライブラリ*/
     if(subsectionTitle[4][4].isSelected() || sectiontitle[4].isSelected()){
 
-    	if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly))
+    	if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly)){
             QM.qtype[4][4]++;
+    	}
     }
     /*5.6記憶クラスとスコープ*/
     if(subsectionTitle[4][5].isSelected() || sectiontitle[4].isSelected()){
-    	if(domtree.createblank("ARGUMENTS","FORMAT",Dom.ALL,Dom.exist,"%s"))
+    	if(domtree.createblank("ARGUMENTS","FORMAT",Dom.ALL,Dom.exist,"%s")){
             QM.qtype[4][5]++;
+    	}
     }
     /*6自作ルール1*/
     if(subsectionTitle[5][0].isSelected() || sectiontitle[5].isSelected()){

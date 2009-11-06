@@ -4,30 +4,37 @@
 	
 	<xsl:template match="/">
 
-		<variables>
-			<value>
-
+		<FOR>
+			<PARENTHESIS>
+				<EXPRESSION>
+					<ASSIGNMENT>
+						<LVALUE>
 			<xsl:for-each select="SOURCE/FUNC/BLOCK/DECLARATION">
-				<!--  •Ï”‚Ì‰Šú‰»‚ð“¯Žž‚És‚í‚È‚¢ê‡  -->
-				<xsl:for-each select="DECLARATOR/VARIABLE">
-					<variable>
-						<name><xsl:apply-templates/></name>
-						<mark>$1</mark>
-					</variable>
-				</xsl:for-each>
 
 				<!--  •Ï”‚Ì‰Šú‰»‚ð“¯Žž‚És‚¤ê‡  -->
-				<xsl:for-each select="DECLARATOR/ASSIGNMENT/LASSIGNMENT/VARIABLE">
-					<variable>
-						<name><xsl:apply-templates/></name>
-						<mark>$2</mark>
-					</variable>					
+				<xsl:for-each select="DECLARATOR/ASSIGNMENT">
+					<xsl:if test="./LASSIGNMENT/VARIABLE==i">
+						<VARIABLE><xsl:value-of select="./LASSIGNMENT/VARIABLE"/></VARIABLE>
+					</xsl:if>
 				</xsl:for-each>
-
 			</xsl:for-each>
-
-			</value>
-		</variables>
+					</LVALUE>
+					<RVALUE>
+			<xsl:for-each select="SOURCE/FUNC/BLOCK/DECLARATION">
+				<xsl:for-each select="DECLARATOR/ASSIGNMENT">
+					<xsl:if test="./LASSIGNMENT/VARIABLE==i">
+						<CONSTANT><xsl:value-of select="./RASSIGNMENT/CONSTANT"/></CONSTANT>		
+					</xsl:if>
+				</xsl:for-each>
+			</xsl:for-each>
+			</RVALUE>
+					</ASSIGNMENT>
+				</EXPRESSION>
+			</PARENTHESIS>
+			
+			
+			
+		</FOR>
 
 	</xsl:template>
 

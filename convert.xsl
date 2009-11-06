@@ -242,6 +242,12 @@ default : </xsl:text>
   <xsl:text disable-output-escaping="yes">&amp;</xsl:text>
   <xsl:apply-templates/>
 </xsl:template>
+<!-- ダブルクオーテーション-->
+<xsl:template match="DQUOTATION">
+<xsl:text>"</xsl:text>
+  <xsl:apply-templates/>
+<xsl:text>"</xsl:text>
+</xsl:template>
 
 <xsl:template match="DIV">
   <xsl:apply-templates select="*[position()=1]"/>

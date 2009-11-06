@@ -63,6 +63,8 @@ class Check{
           sb = sb.append("<QUESTION />");
         }else if(token.equals(":")){
           sb = sb.append("<CORON />");
+        //}else if(token.equals("\"")){
+          //sb = sb.append("<DOUBLEQ/>");
         }else{
           sb = sb.append("<VARIABLE>"+token+"</VARIABLE>");
         }
@@ -137,7 +139,10 @@ class Check{
       }
     }else{  //葉の要素に該当
       if(token.startsWith("\"")){  //セミコロンを含む(文字列要素)場合、特別な処理へ
-        modeString(token);
+    	//String[] str = token.split("\"");
+    	//token = str[1]+"\"";
+        //modeString(str[1]+"\"");
+    	modeString(token);
       }else
         leaf(token);
     }
@@ -267,13 +272,26 @@ class Check{
       if(token.equals("=="))
          token="EQUAL";
     }
+    //有安追加
+    if(token.indexOf("\"")!=-1){
+    	System.out.println("test!!");
+    	token = token.replaceAll("\"","DOUBLEQUOTE");
+    }
     return token;
   }
 
   void modeString(String token){  //フォーマット指定子の切り出し
     String operator = null;
-    if(!token.endsWith("\"")){
+    int i=0;
+    //System.out.println("origin:"+token);
+    
+    if(!token.endsWith("\"")){//ダブルクォーテーションの変換
       token=token.concat(ST.nextToken("\"")+"\"");
+      //System.out.println("token:"+token);
+      String[] str = token.split("\"");
+      //System.out.println("str:"+str[1]);
+      token = "<DQUOTATION>"+str[1]+"</DQUOTATION>";//”をタグに変換
+
       ST.nextToken();  //※余計な\"除去用
     }
     sb = sb.append("<STRING>");
@@ -281,16 +299,33 @@ class Check{
     while(format.hasMoreTokens()){
       if((token=format.nextToken()).equals("%")){
         operator=token+format.nextToken();
+        //System.out.println("operator:"+operator);
         if(!operator.matches("%[0-9a-zA-Z[+][-][.]]+")){
           String[] str1 = operator.split("%[0-9a-zA-Z[+][-][.]]+");
           String[] str2 = operator.split(str1[1]);
           operator = str2[0];
+          //System.out.println("str1[1]:"+str1[1]);
+          //System.out.println("operator1:"+operator);
           sb=sb.append("<FORMAT>"+operator+"</FORMAT>"+str1[1]);
         }else{
-          sb=sb.append("<FORMAT>"+operator+"</FORMAT>");
+        	//System.out.println("operator2:"+operator);
+        	sb=sb.append("<FORMAT>"+operator+"</FORMAT>");
         }
       }else
-        sb=sb.append(token);
+    	  
+      	if(token.equals("\"")){//<STRING>中の”の変換
+      		if(i%2==0){
+      			sb=sb.append("<DQUOTATION>");
+      			i++;
+      		}else{
+      			sb=sb.append("</DQUOTATION>");
+      			i++;
+      		}
+      	}else if(token.equals("%")){//％に2重で反応するのに対する処置
+      		
+      	}else{
+      		sb=sb.append(token);//バックスラッシュなら出力
+      	}
     }
       
     sb = sb.append("</STRING>");

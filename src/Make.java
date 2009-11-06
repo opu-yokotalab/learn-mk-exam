@@ -626,7 +626,7 @@ class Make extends JFrame implements ActionListener {
     sb.append(convertforXML(string.toString())+"\n");
     sb.append("</pre>\n</question>\n");
     for(int i=0 ; i<((ArrayList)QM.answerlist.get(number)).size() ; i++){
-      sb.append("<response id=\""+(i+1)+"\">=["+String.valueOf((char)('A'+i))+"]</response>\n");
+      sb.append("<response id=\""+(i+1)+"\">["+String.valueOf((char)('A'+i))+"]=</response>\n");
     }
     sb.append("<evaluate>");
     sb.append("<function>");
@@ -729,6 +729,8 @@ class Make extends JFrame implements ActionListener {
     str = str.replaceAll("&","&amp;");
     str = str.replaceAll("<","&lt;");
     str = str.replaceAll(">","&gt;");
+    str = str.replaceAll("\"","&quot;");
+    str = str.replaceAll("\'","&apos;");
     
     return str;
   }

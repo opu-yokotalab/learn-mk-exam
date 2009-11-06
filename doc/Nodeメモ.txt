@@ -288,6 +288,10 @@ MULTI(*):
 Multiplication
 要LR
 
+DQUOTATION("):
+Double Quotation
+ダブルクォーテーション
+
 DOT(.):
 ドット演算子
 
@@ -318,3 +322,4 @@ hole(穴あけ箇所)：
 
 NODE(ノード)：
 存在意義を疑ってきた
+

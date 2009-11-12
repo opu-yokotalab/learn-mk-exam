@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="4" type="fill_in_the_blank"><question>
+構造体の宣言と変数宣言を一緒に行います。<br/>
+構造体のそれぞれの設定は以下の表のとおりです。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+
+-----------------------<br/>
+構造体名<tr/>｜coordinate<br/>
+変数<tr/>｜x(int型）<br/>
+<tr/>/<tr/>｜y(int型）<br/>
+構造体変数名｜cd<br/>
+----------------------<br/>
+<br/>
+<pre>
+struct coordinate{
+	int x;
+	int y;
+}[ A ]
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>240</function>
+<correct id="1">cd;</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体宣言と一緒に変数宣言をする場合、セミコロンの前に変数名を書く。</explanation></item>
+</program_set>

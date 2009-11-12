@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="12" type="fill_in_the_blank"><question>
+構造体で宣言された座標を画面に表示させるプログラムです。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+struct coordinate{
+	int x;
+	int y;
+};
+
+int main(){
+
+	struct coordinate cd = {10,20}
+	/*座標を提示する*/
+	printf("x座標:%d,y座標:%d",cd.x,[ A ]);
+
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">cd.y</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>メンバxにアクセスするときと同じように、「構造体変数名.メンバ名」でアクセス。</explanation></item>
+</program_set>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="9" type="fill_in_the_blank"><question>
+以下は身体計測用の構造体宣言である。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+struct jidou{
+	int no;
+	char name[20];
+	float height;
+	float weight;
+}[ A ]
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">;</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体(structure)の宣言はセミコロン(；)で終わりますます。</explanation></item>
+</program_set>

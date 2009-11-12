@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="7" type="fill_in_the_blank"><question>
+以下は商品を表す構造体の宣言である。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+struct commodity{
+	int id;
+	char name[20];
+	int price;
+};
+
+[ A ] [ B ] com;
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">struct</correct>
+<correct id="2">commodity</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体(structure)の宣言はstructから始まります。</explanation></item>
+</program_set>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="1" type="fill_in_the_blank"><question>
+以下は座標を表す構造体の宣言である。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+struct coordinate{
+	int x;
+	int y
+}[ A ]
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">;</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体の宣言の最後にはセミコロン(;)が必要です。</explanation></item>
+</program_set>

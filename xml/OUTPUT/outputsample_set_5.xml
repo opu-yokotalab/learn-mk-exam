@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="test_set">
+<item id="2" type="fill_in_the_blank"><question>
+次の空欄を埋めなさい。<br/><br/>
+<pre>
+int main(void ){
+  int i,sum=0;
+for(i=1;i [ A ] 10;i++){
+  [ B ]=sum+i;
+        }
+return 0;
+        }
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>90</function>
+<correct id="1">&lt;</correct>
+<correct id="2">sum</correct>
+<score>2</score>
+<weight/>
+<point>60</point>
+</evaluate>
+<explanation>[A]は脱出条件、[B]はsumに1を足したものをsumに代入するという処理をする。</explanation></item>
+</program_set>

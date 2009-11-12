@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="13" type="fill_in_the_blank"><question>
+構造体で宣言された商品の情報を提示するプログラムを作ります。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+struct commodity{
+	int id;
+	char name[20];
+	int price;
+}[ A ]
+
+int main (){
+
+/*構造体変数の宣言*/
+struct commodity com = {1,"car",1000000};
+
+/*商品名と価格を合わせて提示する*/
+printf("%c:%d円",com.name,[ B ]);
+
+return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">;</correct>
+<correct id="2">com.price</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>メンバの呼び出し法は「構造体変数名.メンバ名」</explanation></item>
+</program_set>

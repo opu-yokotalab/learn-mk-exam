@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<questionlist>
+	<program_set id="">
+		<question id="">
+			<true>
+				<n_set></n_set>
+				<n_lev></n_lev>
+			</ture>
+			<false>
+				<n_set></n_set>
+				<n_lev></n_lev>
+			</false>
+		</question>
+	</program_set>
+</questionlist>

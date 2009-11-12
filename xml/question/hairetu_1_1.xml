@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="hairetu">
+<item id="1" type="fill_in_the_blank"><question>
+次の3つの変数と同じ数の数を格納できる配列の定義を行いたい。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+int a;
+int b;
+int c;
+
+↓
+
+int d[ A ];
+</pre>
+</question>
+<response id="1">=[A]</response>
+<evaluate>
+<function>60</function>
+<correct id="1">[3]</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>配列の定義は”データ型 配列名[添字]”であらわされる。</explanation></item>
+</program_set>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct2">
+<item id="14" type="fill_in_the_blank"><question>
+構造体で宣言されたデータの体重を表示するプログラムです。<br/>
+構造体配列を用いて3人分のデータを保存できるようにプログラムを作りたいと思っています。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+struct jidou{
+	int no;
+	char name[20];
+	float height;
+	float weight;
+};
+
+int main(){
+
+int i;
+/*三人分のデータを保存します*/
+struct jidou st[ A ] = {{1,"太郎",140,45},{2,"二郎",135,38}{3,"三郎",153,60}};
+
+
+return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">[]</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体配列の定義の仕方を思い出してください。</explanation></item>
+</program_set>

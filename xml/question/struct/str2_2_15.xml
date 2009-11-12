@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct2">
+<item id="15" type="fill_in_the_blank"><question>
+構造体で宣言されたデータの身長を表示するプログラムです。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+struct jidou{
+	int no;
+	char name[20];
+	float height;
+	float weight;
+};
+
+int main(){
+
+struct jidou st[] = {{1,"太郎",140,40},{2,"二郎",137,35},{3,"三郎",145,55}};
+
+/*太郎君の身長を表示させます。*/
+printf("太郎君の身長は：%d",[ A ]);
+
+return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">st[0].height</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体の配列へのアクセス法を復習してください。構造体配列も同様に0から始まります。</explanation></item>
+</program_set>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<FOR>
+	<PARENTHESIS>
+		<EXPRESSION No="1">
+			<ASSIGNMENT>
+				<LVALUE>
+					<VARIABLE>i</VARIABLE>
+				</LVALUE>
+				<RVALUE>
+					<CONSTANT>1</CONSTANT>
+				</RVALUE>
+			</ASSIGNMENT>
+		</EXPRESSION>
+		<EXPRESSION No="2">
+			<FORE>
+				<LVALUE>
+					<VARIABLE>i</VARIABLE>
+				</LVALUE>
+				<RVALUE>
+					<VARIABLE>n</VARIABLE>
+				</RVALUE>
+			</FORE>
+		</EXPRESSION>
+		<EXPRESSION No="3">
+			<POSTFIXPLUS>
+				<VARIABLE>i</VARIABLE>
+			</POSTFIXPLUS>
+		</EXPRESSION>
+	</PARENTHESIS>
+	<BLOCK>
+		<STATEMENT>
+			<EXPRESSION>
+				<ASSIGNMENT>
+					<LVALUE>
+						<VARIABLE>sum</VARIABLE>
+					</LVALUE>
+					<RVALUE>
+						<PLUS>
+							<LVALUE>
+								<VARIABLE>sum</VARIABLE>
+							</LVALUE>
+							<RVALUE>
+								<VARIABLE>i</VARIABLE>
+							</RVALUE>
+						</PLUS>
+					</RVALUE>
+				</ASSIGNMENT>
+			</EXPRESSION>
+		</STATEMENT>
+	</BLOCK>
+</FOR>

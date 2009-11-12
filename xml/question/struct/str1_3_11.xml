@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="11" type="fill_in_the_blank"><question>
+構造体で宣言されたデータの体重を表示するプログラムです。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+struct jidou{
+	int no;
+	char name[20];
+	float height;
+	float weight;
+};
+
+int main(){
+
+struct jidou st1 = {1,"太郎",140,40};
+
+/*太郎君の身長を表示させます。*/
+printf("太郎君の身長は：%d",[ A ]);
+
+return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">st1.height</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体のメンバへのアクセスは「構造体変数名.メンバ名」で行う。</explanation></item>
+</program_set>

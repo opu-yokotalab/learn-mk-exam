@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<questionlist>
+	<program_set id="outputtest">
+		<question id="2">
+			<true>
+				<n_set>outputtest_set01</n_set>
+				<n_id>1</n_id>
+			</ture>
+			<false>
+				<n_set>outputtest_set1</n_set>
+				<n_id>2</n_id>
+			</false>
+		</question>
+	</program_set>
+	<program_set id="outputtest_set01">
+		<question id="1">
+			<true>
+				<n_set>outputtest0001</n_set>
+				<n_id>4</n_id>
+			</ture>
+			<false>
+				<n_set>outputtest_set1</n_set>
+				<n_id>2</n_id>
+			</false>
+		</question>
+	</program_set>
+	<program_set id="outputtest_set1">
+		<question id="2">
+			<true>
+				<n_set>end</n_set>
+				<n_id>0</n_id>
+			</ture>
+			<false>
+				<n_set>outputtest0001</n_set>
+				<n_id>4</n_id>
+			</false>
+		</question>
+	</program_set>
+	<program_set id="outputtest0001">
+		<question id="4">
+			<true>
+				<n_set>optputtest</n_set>
+				<n_id>2</n_id>
+			</ture>
+			<false>
+				<n_set>end</n_set>
+				<n_id>0</n_id>
+			</false>
+		</question>
+	</program_set>
+</questionlist>

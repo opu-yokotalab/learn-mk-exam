@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="test0001">
+<item id="4" type="fill_in_the_blank"><question>
+あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやいゆえよわをん<br/><br/>
+<pre>
+int main(){
+  int a,b,c;
+int sum=0;
+double ave=0;
+ [ A ] ("a = ");
+        scanf("%d",&amp;a);
+         [ B ] ("b = ");
+        scanf("%d",&amp;b);
+         [ C ] ("c = ");
+        scanf("%d",&amp;c);
+        sum=a+b+c;
+         [ D ] ("a+b+c = %d\n",sum);
+        ave=sum/3;
+         [ E ] ("average = %f\n",ave);
+        return 0;
+        }
+
+</pre>
+</question>
+<response id="1">=[A]</response>
+<response id="2">=[B]</response>
+<response id="3">=[C]</response>
+<response id="4">=[D]</response>
+<response id="5">=[E]</response>
+<evaluate><function>15</function><correct id="1">printf</correct>
+<correct id="2">printf</correct>
+<correct id="3">printf</correct>
+<correct id="4">printf</correct>
+<correct id="5">printf</correct>
+<score>15</score><weight/><point>10</point></evaluate><explanation>解説を書きます。詳細な解説を書けるように。</explanation></item>
+</program_set>

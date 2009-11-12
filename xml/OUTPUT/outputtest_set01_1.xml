@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="test_set01">
+<item id="1" type="fill_in_the_blank"><question>
+次の[ A ]にあてはまる空欄を埋めなさい。<br/><br/>
+<pre>
+int main(void ){
+  int i,sum=0;
+for(i=1;i [ A ] 10;i++){
+  sum=sum+i;
+        }
+return 0;
+        }
+
+</pre>
+</question>
+<response id="1">=[A]</response>
+<evaluate><function>10</function><correct id="1">&lt;</correct>
+<score>10</score><weight/><point>10</point></evaluate><explanation>終了判定では、iと10の比較を行います。</explanation></item>
+</program_set>

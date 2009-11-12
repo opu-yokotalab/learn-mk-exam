@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<COURSELIST>
+	<COURSE id="1" title="再帰">
+		<PROGRAM_SET>saiki</PROGRAM_SET>
+	</COURSE>
+	<COURSE id="2" title="リスト">
+		<PROGRAM_SET>list</PROGRAM_SET>
+	</COURSE>
+</COURSELIST>

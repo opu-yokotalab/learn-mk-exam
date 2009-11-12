@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="3" type="fill_in_the_blank"><question>
+coordinate型の変数cd宣言である。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+struct coordinate{
+	int x;
+	int y;
+};
+
+[ A ] coordinate cd = {10,20}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>120</function>
+<correct id="1">struct</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体coordinate型の変数を宣言するときでもstructは必要です。</explanation></item>
+</program_set>

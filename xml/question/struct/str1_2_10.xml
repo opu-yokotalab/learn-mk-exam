@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct">
+<item id="10" type="fill_in_the_blank"><question>
+身体計測用データの構造体です。<br/>
+[ A ]に当てはまるものをは何でしょう。<br/><br/>
+<pre>
+struct jidou{
+	int no;
+	char name[20];
+	float height;
+	float weight;
+};
+
+[ A ] jidou st1 = {1,"太郎",140,40};
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">struct</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体変数の定義もstructから始まる。</explanation></item>
+</program_set>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct3">
+<item id="28" type="fill_in_the_blank"><question>
+ゲームのキャラ設定を保持するための構造体です。<br/>
+[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#define PERTY 4;
+
+typedef struct chara{
+char name[10];
+int status[4];
+}CHARA;
+
+void main(){
+
+	CHARA data[PERTY] ={{"勇者",{100,30,12,7}},{"戦士",{120,7,15,9}},
+						{"僧侶",{70,45,6,6}},{"魔法使い",{65,55,3,6}}};
+	CHARA *pdata=&data;
+
+	for(i=0;i&lt;PERTY;i++{
+		printf("名前:%s",pdata-&gt;name);
+		printf("HP:%d",pdata-&gt;status[0]);
+		printf("MP:%d",pdata-&gt;status[1]);
+		printf("攻撃力:%d",pdata-&gt;status[2]);
+		printf("守備力:%d",pdata-&gt;status[3]);
+		/*次のキャラの設定を表示するためポインタを進める*/
+		[ A ]
+	}
+	return 0;
+}
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">pdata++;</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタを進めるには構造体ポインタをインクリメントすればよい。</explanation></item>
+</program_set>

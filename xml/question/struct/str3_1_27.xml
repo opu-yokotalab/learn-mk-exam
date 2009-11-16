@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct3">
+<item id="27" type="fill_in_the_blank"><question>
+ゲームのキャラ設定を保持するための構造体です。<br/>
+[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+typedef struct chara{
+char name[10];
+int status[4];
+}CHARA;
+
+void main()
+{
+CHARA data={"勇者",{100,30,12,7}};
+CHARA *pdata=&data;
+
+printf("名前:%s",[ A ]);
+printf("HP:%d",pdata-&gt;status[0]);
+printf("MP:%d",pdata-&gt;status[1]);
+printf("攻撃力:%d",pdata-&gt;status[2]);
+printf("守備力:%d",pdata-&gt;status[3]);
+}
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">pdata-&gt;name</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体変数へのアクセスは「構造体変数名-&gt;メンバ名」で可能である。</explanation></item>
+</program_set>

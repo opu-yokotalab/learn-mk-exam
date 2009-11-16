@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct2">
+<item id="22" type="fill_in_the_blank"><question>
+車の情報を格納する構造体です。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+typedef struct Car{
+	int num;
+	char name[20];
+	int price;
+};
+
+int main(){
+
+	struct Car cars[ A ];
+	int flag;
+	
+	cars[0].num = 10;
+	cars[0].name = "Lancer";
+	cars[0].price = 350;
+	
+	cars[1].num = 2;
+	cars[1].name = "civic";
+	cars[1].price = 300;
+	
+	cars[2].num = 35;
+	cars[2].name = "skyline";
+	cars[2].price = 800;
+
+	printf("あなたの見たい車種の情報は(1～3)：");
+	scanf("%d",&amp;flag);
+	
+	if(flag&gt;0 &amp;&amp; flag&lt;4){
+		printf("No.%dの車は%c。値段は%d万円です。"[ B ],cars[flag].name,cars[flag].price);
+	}
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">[3]</correct>
+<correct id="2">cars[flag].nmu</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体の配列の宣言について復習しましょう。</explanation></item>
+</program_set>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct2">
+<item id="19" type="fill_in_the_blank"><question>
+x-y座標軸上の2点p(x1,y1),q(x2,y2)を与えたときのその2点間の距離dを求めるプログラムを作る。<br/>
+ちなみにdの計算式はd=sqrt(pow（x1-x2,2)+pow(y1-y2,2))となる。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+
+struct point{
+	float x;
+	float y;
+};
+
+int main(){
+
+	float d;
+	struct point [ A ];
+
+	printf("始点座標は？:");
+	scanf("%f%f",&amp;data[0].x,&amp;data[0].y);
+	printf("終点座標は？:");
+	scanf("%f%f",&amp;data[1].x,&amp;data[1].y);
+
+	d = sqrt (pow(data[0].x -data[1].x,2)+pow(data[0].y-data[1].y,2));
+	printf("距離 = %8.2f\n",d);	
+
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>360</function>
+<correct id="1">data[2]</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体の配列の宣言について復習しましょう。</explanation></item>
+</program_set>

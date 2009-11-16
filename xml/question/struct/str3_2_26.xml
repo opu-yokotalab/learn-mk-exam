@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct3">
+<item id="26" type="fill_in_the_blank"><question>
+生徒のテストの点を格納する構造体です。<br/>
+[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+	struct score{
+		char name[16];
+		int math;
+		int english;
+		int kei;
+	};
+
+	main(){
+		struct score a[5];
+		struct score *p;
+		int i;
+		/*構造体ポインタへ構造体の先頭アドレスを代入*/
+		[ A ]
+		/*値を代入させる*/
+		printf("名前 英語の点 数学の点 を入力してください。");
+		for(i = 0; i &lt; 5; i++){
+			scanf("%s%d%d", p-&gt;name, &amp;p-&gt;math, &amp;p-&gt;english);
+			p-&gt;kei = p-&gt;math + p-&gt;english;
+			p++;
+		}
+
+		p = a;
+		/*代入された値の表示*/
+		for(i = 0; i &lt; 5; i++){
+		printf("%s の合計点は %d です。", p-&gt;name, [ B ]);
+		p++;
+	}
+ 
+return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">p = a;</correct>
+<correct id="2">p-&gt;kei</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体変数へのアクセスは「構造体変数名-&gt;メンバ名」でも可能である。</explanation></item>
+</program_set>

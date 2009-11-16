@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct2">
+<item id="23" type="fill_in_the_blank"><question>
+生徒の情報が格納された構造体から<br/>
+平均身長と平均体重を求めるプログラムです。<br/>
+[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#define PERSON_NUM 5
+
+typedef struct {   
+    char name[20];
+    char sex; 
+    int age;
+    double height; 
+    double weight; 
+} person_t;
+
+main()
+{
+    person_t p[PERSON_NUM] = {{"Bob",      'M', 19, 165.4, 72.5},
+                              {"Alice",    'F', 19, 161.7, 44.2},
+                              {"Tom",      'M', 20, 175.2, 66.3},
+                              {"Stefany",  'F', 18, 159.3, 48.5},
+                              {"Leonardo", 'M', 19, 172.8, 67.2}};
+    int i;
+    double height_sum, weight_sum, height_ave, weight_ave;                          
+    
+    /*合計身長・体重を求める*/
+    height_sum = weight_sum = 0.0;
+    for (i = 0; i &lt; PERSON_NUM; i++) {
+        height_sum += [ A ];
+        weight_sum += p[i].weight;
+    }
+    /*平均身長・体重を求める*/
+    height_ave = [ B ];
+    weight_ave = weight_sum/PERSON_NUM;
+    
+    printf("average height = %f", height_ave);
+    printf("average weight = %f", weight_ave);
+    
+    return 0;
+}
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>420</function>
+<correct id="1">p[i].height</correct>
+<correct id="2">height_sum/PERSON_NUM</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体のメンバへのアクセス法は「構造体変数名.メンバ名」です。</explanation></item>
+</program_set>

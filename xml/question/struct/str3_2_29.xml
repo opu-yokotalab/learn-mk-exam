@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct3">
+<item id="29" type="fill_in_the_blank"><question>
+以下はリストを表現するための構造体と、<br/>
+リストの追加を行うための関数です。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+○構造体
+struct LIST {
+	struct LIST * next;
+	char   body[20];
+};
+○リストの追加関数
+/*リストの先頭オブジェクトのアドレスを引数にとる*/
+struct LIST * newList( struct LIST ** pstart){
+	struct LIST *p, *new;
+	p = *pstart;
+	/*追加するリスト(動的に割り当てる)*/
+	new = (struct LIST *)[ A ](sizeof(struct LIST));
+	new->next = NULL;
+	
+	/* リストに要素が存在するとき */
+	if(p!=NULL){                
+		while(p->next!=NULL){    /* リストの末尾を探す */
+		p=p->next;
+	}
+	/* リストの末尾につなげる */
+	p->next = new;
+	
+	}else{/*リストに要素がないとき*/
+		/* 最初の要素の場所を *pstart に */
+		*pstart = new;           
+	}
+	return new;
+}
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">malloc</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>動的に割り当てるためにはmalloc()を用いる。</explanation></item>
+</program_set>

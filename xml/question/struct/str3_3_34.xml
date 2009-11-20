@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct3">
+<item id="34" type="fill_in_the_blank"><question>
+車のナンバーとガソリン搭載量を記録するプログラムです。<br/>
+[ A ]と[ B ]と[ C ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include &lt;stdio.h&gt;
+
+typedef [ A ] Car{
+	int num;
+	double gas;
+}Car;
+
+void show(Car *pC);
+
+int main(void){
+	Car car1 ={0,0.0};
+
+	printf("ナンバーを入力してください:");
+	scanf("%d",&amp;car1.num);
+
+	printf("ガソリン量を入力してください:");
+	scanf("%lf",&amp;car1.gas);
+
+	show([ B ]);
+
+	return 0;
+
+}
+
+void show (Car *pC){
+	printf("車のナンバーは%d:ガソリン量は%fです。",[ C ],pC->gas);
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<response id="3">[C]=</response>
+<evaluate>
+<function>360</function>
+<correct id="1">struct</correct>
+<correct id="2">&amp;car1</correct>
+<correct id="3">pC->num</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>関数呼び出しの引数には構造体へのポインタを与えます。</explanation></item>
+</program_set>

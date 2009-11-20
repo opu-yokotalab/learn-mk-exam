@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct3">
+<item id="33" type="fill_in_the_blank"><question>
+学生の身体計測の結果を記録するプログラムです。<br/>
+[ A ]と[ B ]と[ C ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct student{
+	int year;	/* 学年 */
+	int clas;	/* クラス */
+	int number;	/* 出席番号 */
+	char name[64];	/* 名前 */
+	double stature;	/* 身長 */
+	double weight;	/* 体重 */
+};
+
+int main(void)
+{
+	struct student data[10];
+	struct [ A ] *pdata;
+	int i;
+
+	for(i=0;i&lt;10;i++){
+		pdata = &amp;data[i];	/* 構造体ポインタの初期化 */
+		printf("学年(1-6):");
+		scanf("%d",&amp;(*pdata).year);	/* 構造体ポインタを用いて学年への代入 */
+		printf("クラス(1-5):");
+		scanf("%d",&amp;(*pdata).clas);/*構造体ポインタを用いてクラスへの代入 */
+		printf("出席番号(1-50):");
+		scanf("%d",&amp;(*pdata).number);/*構造体ポインタを用いて出席番号への代入 */
+		printf("名前:");
+		scanf("[ B ]",(*pdata).name);/*構造体ポインタを用いて名前への代入*/
+		printf("身長:");
+		scanf("%d",&amp;(*pdata).stature);/*構造体ポインタを用いて身長への代入 */
+		printf("体重:");
+		scanf("%d",&amp;(*pdata).weight);/*構造体ポインタを用いて体重への代入 */
+	}
+	
+	for(i=0;i&lt;10;i++){
+		printf("学年:%d",(*pdata).year);
+		printf("クラス:%d",(*pdata).class);
+		printf("出席番号:%d",[ C ]);
+		printf("名前:%s",(*pdata).name);
+		printf("身長:%d",(*pdata).stature);
+		printf("体重:%d",(*pdata).weight);
+	}
+	
+	return 0;
+}
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<response id="3">[C]=</response>
+<evaluate>
+<function>420</function>
+<correct id="1">student</correct>
+<correct id="2">%s</correct>
+<correct id="3">(*pdata).number</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>型の指定に注意をして解いてみてください。</explanation></item>
+</program_set>

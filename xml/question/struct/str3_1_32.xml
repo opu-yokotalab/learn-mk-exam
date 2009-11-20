@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="struct3">
+<item id="32" type="fill_in_the_blank"><question>
+学生の身体計測の結果を記録するプログラムです。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct student{
+	int year;	/* 学年 */
+	int clas;	/* クラス */
+	int number;	/* 出席番号 */
+	char name[64];	/* 名前 */
+	double stature;	/* 身長 */
+	double weight;	/* 体重 */
+};
+
+int main(void)
+{
+	struct student data[10];
+	struct student *pdata;
+	int i;
+
+	for(i=0;i&lt;10;i++){
+		pdata = &data[i];	/* 構造体ポインタの初期化 */
+		printf("学年:");
+		scanf("%d",&(*pdata).year);	/* 構造体ポインタを用いて学年への代入 */
+		printf("名前:");
+		scanf("%s",[ A ]);/*構造体ポインタを用いて名前への代入*/
+		
+	}
+	
+	for(i=0;i&lt;10;i++){
+		printf("学年:%d",(*pdata).year);
+		printf("名前:%s",(*pdata).name);
+	}
+	
+	return 0;
+}
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">(*pdata).name</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>初期化を行っているので、(*pdata).nameで<br/>
+data.nameにアクセスができる。書き込みでも&amp;はいらない。</explanation></item>
+</program_set>

@@ -2,7 +2,7 @@
 <program_set id="struct3">
 <item id="28" type="fill_in_the_blank"><question>
 ゲームのキャラ設定を保持するための構造体です。<br/>
-[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
 <pre>
 #include&lt;stdio.h&gt;
 #define PERTY 4;
@@ -16,7 +16,7 @@ void main(){
 
 	CHARA data[PERTY] ={{"勇者",{100,30,12,7}},{"戦士",{120,7,15,9}},
 						{"僧侶",{70,45,6,6}},{"魔法使い",{65,55,3,6}}};
-	CHARA *pdata=&data;
+	CHARA *pdata=&amp;data;
 
 	for(i=0;i&lt;PERTY;i++{
 		printf("名前:%s",pdata-&gt;name);

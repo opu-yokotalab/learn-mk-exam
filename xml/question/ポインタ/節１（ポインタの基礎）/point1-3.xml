@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer">
+<item id="10" type="fill_in_the_blank"><question>
+ポインタ変数を使用して整数型変数aの値を1増加するプログラムを作ります。<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+ int a ,*p;
+ p = [ A ];
+ printf("Date : ");
+ scanf("%d",p);
+ [ B ]
+ printf("a = %d\n",a);
+ return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">&amp;a</correct>
+<correct id="2">(*p)++;</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>(*p)++;は、pの指すaの内容を1増加します。</explanation></item>
+</program_set>

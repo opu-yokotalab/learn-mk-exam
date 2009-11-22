@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer3">
+<item id="28" type="fill_in_the_blank"><question>
+必要なサイズのメモリを動的に確保するためのプログラムである。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int main(void){
+	char *ptr;
+	ptr = (char *)malloc(sizeof(char));
+	if(ptr == NULL) exit(1); /*エラー処理*/
+
+	*ptr = ''B'';
+	printf("%p,%c", prt, *ptr);
+
+	[ A ];
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">free(ptr)</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>malloc()によって確保したメモリ領域は、その使用が終わったら関数free()により解放する。</explanation></item>
+</program_set>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer2">
+<item id="19" type="fill_in_the_blank"><question>
+次の5つの整数型のデータを配列s[]に初期化したのちに、<br/>
+各配列の和を求めるプログラムです。10、20、30、40、50<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#define N 5
+int main(void){
+	int i,sum=0;
+	int s[N]={10,20,30,40,50};
+	int *p = [ A ];
+
+	for(i=0;i&lt;N;i++)
+	sum + = [ B ];
+	printf("合計 = %d\n", sum);
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">s</correct>
+<correct id="2">*p++</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation></explanation></item>
+</program_set>

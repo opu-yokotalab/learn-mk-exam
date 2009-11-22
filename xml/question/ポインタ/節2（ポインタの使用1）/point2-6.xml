@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer2">
+<item id="21" type="fill_in_the_blank"><question>
+キーボードから入力した文字列のポインタを出力するプログラムです。<br/>
+[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+	char s[11], *p1;
+	p1 = [ A ];
+	printf("文字列(10文字まで)を入力しなさい ->");
+	gets([ B ]);
+	puts(p2);
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">s</correct>
+<correct id="2">p1</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation></explanation></item>
+</program_set>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer">
+<item id="2" type="fill_in_the_blank"><question>
+以下はアドレスとサイズを表示するプログラムです。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+	char a = 'A';
+	printf("a=%c,  アドレス %p , サイズ %d", a, [ A ], sizeof(char))
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">&amp;a</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>&amp;aはアドレス演算子と呼ばれる。変数の前に&amp;をつけたものは、<br/>
+その変数が格納されているメモリ領域の先頭アドレスとして解釈される</explanation></item>
+</program_set>

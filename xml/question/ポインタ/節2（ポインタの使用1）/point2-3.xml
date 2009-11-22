@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer2">
+<item id="16" type="fill_in_the_blank"><question>
+初期化した配列a[]の内容を出力するプログラムです<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+	int i, *p, a[5]={3,5,2,1,4};
+	for(i=0;i&lt;5;i++){
+		p = [ A ];
+		printf("%d", *p);
+		}
+	putchar('\n');
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">&amp;a[i]</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation></explanation></item>
+</program_set>

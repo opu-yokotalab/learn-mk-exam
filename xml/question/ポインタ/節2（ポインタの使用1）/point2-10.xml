@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer2">
+<item id="22" type="fill_in_the_blank"><question>
+ポインタを使用して、1文字のデータと文字列データを別々に読み込んで出力するプログラム<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+	char c, s[100];
+	char *p1, *p2;
+	p1 = [ A ];
+	p2 = [ B ];
+	printf("何か1文字入力しなさい");
+	scanf("%c",p1);
+	printf("次に文字列を入力しなさい");
+	scanf("%s",p2);
+	printf("入力データ %cと%s",*pi,p2)
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">&amp;c</correct>
+<correct id="2">s</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>1文字か文字列化の違いに注意しよう。</explanation></item>
+</program_set>

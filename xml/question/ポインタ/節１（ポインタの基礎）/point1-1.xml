@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer">
+<item id="4" type="fill_in_the_blank"><question>
+変数の値とアドレスを表示するプログラムを作ります。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+int main(void){
+	int a = 123;
+	printf("aの値:%d",a);
+	printf("aのアドレス:%p",[ A ]);
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">&amp;a</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>アドレス演算子「&amp;」を使うと、変数や配列のアドレスを取得する事が出来ます。</explanation>
+</item>
+</program_set>

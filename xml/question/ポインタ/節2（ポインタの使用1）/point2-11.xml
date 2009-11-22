@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer2">
+<item id="25" type="fill_in_the_blank"><question>
+入力した文字データを大文字に変換して配列s[]に格納するプログラムです。 <br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+void input(char *);
+
+int main(void){
+	char s[251];
+	char *p=s;
+	 input( p );
+	 while( *p ! = ''\\0'')
+	 	putchar([ A ]);
+	 return 0;
+}
+
+void input(char *pi){
+	printf("data :");
+	gets(pi);
+	while( *p ! = ''\\0'')
+		[ B ]=toupper(*pi);
+	return;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">*p++</correct>
+<correct id="2">*pi++</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>参照渡しを行っているので、配列sに格納される。</explanation></item>
+</program_set>

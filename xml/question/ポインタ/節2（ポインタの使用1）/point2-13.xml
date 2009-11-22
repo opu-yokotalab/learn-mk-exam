@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer2">
+<item id="26" type="fill_in_the_blank"><question>
+次のプログラムは、入力した2つの文字列を実行例に示すように入れ替えを出力しています。<br/>
+[ A ][ B ][ C ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+	char word1[30];
+	char word2[30];
+	char *p0, **p1=word1, *p2=word2;
+
+	printf("word :"); gets(word1);
+	printf("word :"); gets(word2);
+	printf("%s%s ---&lt;",p1, p2);
+	[ A ];
+	[ B ];
+	[ C ];
+	printf("%s%s\n", p1, p2);
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<response id="3">[C]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">p0=p1</correct>
+<correct id="2">p1=p2</correct>
+<correct id="3">p2=p1</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタ変数p1とp2の交換は、単にp1=p2;とするとp1の内容が消滅するので<br/>
+一時的に保持するポインタ変数p0を利用します。</explanation></item>
+</program_set>

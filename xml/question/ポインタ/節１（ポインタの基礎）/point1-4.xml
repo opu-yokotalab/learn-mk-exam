@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer">
+<item id="6" type="fill_in_the_blank"><question>
+ポインタが指している値を表示するプログラムを作ります<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main( void )
+{
+	char c;
+	char *p;
+
+	c = 'A';
+	p = [ A ];
+	printf( "%c\n",[ B ]);
+
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">&amp;c</correct>
+<correct id="2">*p</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタ変数pと&amp;cは等価です</explanation></item>
+</program_set>

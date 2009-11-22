@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer2">
+<item id="23" type="fill_in_the_blank"><question>
+入力した文字データを大文字に変換して配列s[]に格納するプログラムです。 <br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+void input(char *);
+
+int main(void){
+	char s[251];
+	char *p=s;
+	 input( p );
+	 while( [ A ])
+	 	putchar(*p++);
+	 return 0;
+}
+
+void input(char *pi){
+	printf("data :");
+	gets(pi);
+	while( [ A ])
+		*pi++ = toupper(*pi);
+	return;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">*p!=''\\0''</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>判定条件はヌル文字かどうかで判定を行う。</explanation></item>
+</program_set>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer3">
+<item id="14" type="fill_in_the_blank"><question>
+ポインタ配列に格納された文字列を表示するプログラムです。<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+
+  /* ポインタwday[  ]の指している文字列の配列は、
+     const：書き変え禁止で
+     static：他のファイルから参照禁止 */
+
+const static char *wday[  ] = {"Sunday", "Monday", "Tuesday",
+                               "Wednesday", "Thursday",
+                               "Friday", "Saturday", NULL
+};
+
+void MyPrint(const char **p);      /* 引数はポインタを指すポインタ */
+void main(void);
+
+void MyPrint(const char **p)
+{
+    while ([ A ]) {                   /* pの指すポインタがNULLでない間 */
+        printf("%s,", *p);        /* pの指す中身を表示 */
+        p++;
+    }
+}
+
+void main(void)
+{
+    const char **p;      /* ポインタを指すポインタ */
+
+    p = wday;            /* ポインタの配列の先頭を指すようにする */
+    MyPrint([ B ]);
+
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>360</function>
+<correct id="1">*p</correct>
+<correct id="2">p</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタを配列として宣言したり使用する事が出来ます。</explanation></item>
+</program_set>

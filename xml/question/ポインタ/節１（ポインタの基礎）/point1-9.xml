@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer">
+<item id="5" type="fill_in_the_blank"><question>
+次のように初期化した変数aを、ポインタを使用して出力するプログラムです。int a = 5;<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+	int a = 5, *p;
+	p = [ A ];
+	printf("変数a = %d\n", a);
+	printf("*pの値 = %d\n", *p);
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">&amp;a</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタ変数pと&amp;aは等価です</explanation></item>
+</program_set>

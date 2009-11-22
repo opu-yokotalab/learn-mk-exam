@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer3">
+<item id="14" type="fill_in_the_blank"><question>
+次の3つの文字列をポインタを使って出力しなさい。"春" "夏" "秋"<br/>
+[ A ][ B ]に当てはまるものを何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#define N 3
+int main(void){
+	char [ A ];
+	int i;
+
+	p[0] = "春";
+	p[1] = "夏";
+	p[2] = "秋";
+	for(i=0;i&lt;N;i++)
+		printf(" %s",[ B ]);
+		return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">*p[3]</correct>
+<correct id="2">p[i]</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタを配列として宣言したり使用する事が出来ます。</explanation></item>
+</program_set>

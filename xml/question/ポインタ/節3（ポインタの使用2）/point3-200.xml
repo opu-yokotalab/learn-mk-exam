@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer3">
+<item id="14" type="fill_in_the_blank"><question>
+ポインタ配列に格納された文字列とそれを指すアドレスを表示するプログラムです。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#include <stdio.h>
+int main(void) {
+	int i;
+	char *name[3] = {"田中マルクス闘莉王","中村俊介","中田英寿"};
+	for(i = 0; i < 3; i++) {
+		printf("%p : %s\n",[ A ],name[i]);
+	}
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>240</function>
+<correct id="1">name[i]</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>アドレスを表示するには型式指定子の%pを用いる。</explanation></item>
+</program_set>

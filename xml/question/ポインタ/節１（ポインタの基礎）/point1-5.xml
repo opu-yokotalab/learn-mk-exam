@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer">
+<item id="7" type="fill_in_the_blank"><question>
+変数のアドレス、値、ポインタ、ポインタの指す値を表示するプログラム<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main( void )
+{
+	int a = 611, *ptr;
+
+	ptr = [ A ];
+
+	printf( "変数 a のアドレス = %p\n",&amp;a;);
+	printf( "変数 a の値  = %d\n", a );
+	printf( "ポインタ ptr の値 = %p\n", ptr );
+	printf( "ポインタ ptr の指す値 = %d\n",[ B ]);
+
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">&amp;a</correct>
+<correct id="2">*ptr</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタ変数ptrと&amp;aは等価です</explanation></item>
+</program_set>

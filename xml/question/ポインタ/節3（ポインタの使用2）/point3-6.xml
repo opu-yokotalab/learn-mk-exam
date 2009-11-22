@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer3">
+<item id="14" type="fill_in_the_blank"><question>
+ポインタを要素とする配列を表示するプログラムである。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+int main(void){
+	int i;
+	char [ A ] = {"okayama","hiroshima","yamaguchi","shimane","tottori"};
+
+	for(i=0;i&lt;5;i++)
+		printf("%s",chugoku[i]);
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>60</function>
+<correct id="1">*chugoku[5]</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ポインタを配列として宣言したり使用する事が出来ます。</explanation></item>
+</program_set>

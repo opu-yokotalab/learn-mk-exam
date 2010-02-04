@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="26" type="fill_in_the_blank"><question>
 次のプログラムは、入力した2つの文字列を実行例に示すように入れ替えを出力しています。<br/>
 [ A ][ B ][ C ]に当てはまるものは何でしょう。<br/><br/>
@@ -33,6 +33,5 @@ int main(void){
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation>ポインタ変数p1とp2の交換は、単にp1=p2;とするとp1の内容が消滅するので<br/>
-一時的に保持するポインタ変数p0を利用します。</explanation></item>
+<explanation>ポインタ変数p1とp2の交換は、単にp1=p2;とするとp1の内容が消滅するので、一時的に保持するポインタ変数p0を利用します。</explanation></item>
 </program_set>

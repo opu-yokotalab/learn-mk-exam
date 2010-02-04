@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="15" type="fill_in_the_blank"><question>
 下記は参照渡しをシュミレートしたプログラムです。<br/>
 [ A ]に当てはまるものは何でしょう。<br/><br/>
@@ -13,7 +13,7 @@ void sub(int *b){
 
 int main(void){
 	int a = 1;
-	[ A ];
+	sub([ A ]);
 	printf("a = %d\n",a);
 }
 </pre>
@@ -21,10 +21,10 @@ int main(void){
 <response id="1">[A]=</response>
 <evaluate>
 <function>60</function>
-<correct id="1">sub( &amp;a )</correct>
+<correct id="1">&amp;a</correct>
 <score>1</score>
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation>sub関数を用いる</explanation></item>
+<explanation>ポインタの基礎を復習して下さい</explanation></item>
 </program_set>

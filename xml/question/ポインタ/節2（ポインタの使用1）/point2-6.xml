@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="21" type="fill_in_the_blank"><question>
-キーボードから入力した文字列のポインタを出力するプログラムです。<br/>
-[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+キーボードから入力した文字列をポインタを使用して出力するプログラムです。<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
 <pre>
 #include&lt;stdio.h&gt;
 int main(void){
@@ -25,5 +25,5 @@ int main(void){
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation></explanation></item>
+<explanation>ポインタの基礎を復習して下さい。</explanation></item>
 </program_set>

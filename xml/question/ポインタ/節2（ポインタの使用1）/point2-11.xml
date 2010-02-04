@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="25" type="fill_in_the_blank"><question>
-入力した文字データを大文字に変換して配列s[]に格納するプログラムです。 <br/>
+次のプログラムは、入力した文字データを大文字に変換して配列s[]に格納するプログラムです。 <br/>
 [ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
 <pre>
 #include&lt;stdio.h&gt;
@@ -12,15 +12,15 @@ int main(void){
 	char s[251];
 	char *p=s;
 	 input( p );
-	 while( *p ! = ''\\0'')
-	 	putchar([ A ]);
+	 while( *p ! = '\0')
+	 	puutchar([ A ]);
 	 return 0;
 }
 
 void input(char *pi){
 	printf("data :");
 	gets(pi);
-	while( *p ! = ''\\0'')
+	while( *p ! = '\0')
 		[ B ]=toupper(*pi);
 	return;
 }
@@ -36,5 +36,5 @@ void input(char *pi){
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation>参照渡しを行っているので、配列sに格納される。</explanation></item>
+<explanation></explanation></item>
 </program_set>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer3">
+<item id="14" type="fill_in_the_blank"><question>
+ポインタのポインタを用いて、"Iizumi","Kanto","Kudo","Sato",<br/>
+"Sugawara","Matuda","Wada"の7個の文字列の長さを求めて表示するプログラムである。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main( void )
+{
+	char [ A ][7] = {
+		"Iizumi", "Kanto", "Kudo", "Sato",
+		"Sugawara", "Matuda", "Wada"
+	};
+	char **p;
+	int i, j;
+
+	p = name;
+	for ( i = 0; i &lt; 7; i++ ){
+		for ( j = 0; *( *( p+i ) + j ) != ''\\0''; j++ );
+		printf( "%2d : %s", j, *( p+i ) );
+	}
+
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">*name</correct>
+<score>2</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>ここでは「ポインタの配列」を定義します</explanation></item>
+</program_set>

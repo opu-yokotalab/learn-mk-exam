@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="20" type="fill_in_the_blank"><question>
-キーボードから入力した1文字のポインタを出力するプログラムです。<br/>
-[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+キーボードから入力した1文字をポインタを使用して出力するプログラムです。<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
 <pre>
 #include&lt;stdio.h&gt;
 int main(void){
 	char c, *p1;
 	p1 = [ A ];
-	printf("1文字を入力しなさい -&gt; ");
+	printf("1文字を入力しなさい -> ");
 	scanf("%c",p1);
 	putchar([ B ]);
 	return 0;
@@ -25,5 +25,5 @@ int main(void){
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation></explanation></item>
+<explanation>ポインタの基礎を復習して下さい。</explanation></item>
 </program_set>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="pointer3">
+<item id="14" type="fill_in_the_blank"><question>
+次のプログラムは、乱数を使用して無作為に10枚のトランプカードを表示しています。<br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;time.h&gt;
+int main(void){
+	int i, a, b;
+	char *mark[] = {"DIA","HART","SPEAD","CLUB"};
+	char num[]="JQK";
+	time_t seed;
+
+	time(&amp;seed);
+	srand((unsigned int)seed);
+	for(i=0; i&lt;10; i++){
+		a = rand() % 4;
+		b = rand() % 13+1;
+		if(b&gt;=2 &amp;&amp; b&lt;=10)
+			printf("%s(%d)",[ A ],''A'');
+		else printf("%s(%c)",mark[a],[ B ]);
+	}
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>300</function>
+<correct id="1">mark[a]</correct>
+<correct id="2">num[b-11]</correct>
+<score>3</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>プログラムを実行するたびに、乱数が同じ数の並びにならないように、srand()の引数にtimeで求めた現在時刻を種(seed)として与えています。</explanation></item>
+</program_set>

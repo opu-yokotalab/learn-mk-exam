@@ -7,7 +7,7 @@
 #include&lt;stdio.h&gt;
 int main(void){
 	char a = 'A';
-	printf("a=%c, \t アドレス [ A ] \t サイズ %d",a,&amp;a,sizeof(char))
+	printf("a=%c, \t アドレス [ A ] \t サイズ %d",a,&amp;a,sizeof(a));
 }
 </pre>
 </question>

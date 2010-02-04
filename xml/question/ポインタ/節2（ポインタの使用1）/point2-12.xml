@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="23" type="fill_in_the_blank"><question>
-入力した文字データを大文字に変換して配列s[]に格納するプログラムです。 <br/>
+次のプログラムは、入力した文字データを大文字に変換して配列s[]に格納するプログラムです。 <br/>
 [ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
 <pre>
 #include&lt;stdio.h&gt;
@@ -13,7 +13,7 @@ int main(void){
 	char *p=s;
 	 input( p );
 	 while( [ A ])
-	 	putchar(*p++);
+	 	puutchar(*p++);
 	 return 0;
 }
 
@@ -29,10 +29,10 @@ void input(char *pi){
 <response id="1">[A]=</response>
 <evaluate>
 <function>180</function>
-<correct id="1">*p!=''\\0''</correct>
+<correct id="1">*p ! = '\0'</correct>
 <score>2</score>
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation>判定条件はヌル文字かどうかで判定を行う。</explanation></item>
+<explanation>文字がNULL('\0')になるまで、ループを繰り返します。</explanation></item>
 </program_set>

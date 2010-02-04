@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="17" type="fill_in_the_blank"><question>
 ポインタ変数を使用して、文字列"DATA"を1文字単位で出力しなさい。<br/>
 [ A ]に当てはまるものは何でしょう。<br/><br/>
@@ -9,7 +9,7 @@ int main(void){
 	char *p;
 	p = "DATA";
 	while([ A ])
-		printf("%c",*(p++));
+		printf("%c\n",*(p++));
 	return 0;
 }
 </pre>
@@ -17,10 +17,10 @@ int main(void){
 <response id="1">[A]=</response>
 <evaluate>
 <function>60</function>
-<correct id="1">*p!=''\\0''</correct>
+<correct id="1">*p!='\0'</correct>
 <score>1</score>
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation>pで参照した文字がNULL(''\\0'')になるまで、ループを繰り返します。</explanation></item>
+<explanation>pで参照した文字がNULL('\0')になるまで、ループを繰り返します。</explanation></item>
 </program_set>

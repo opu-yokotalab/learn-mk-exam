@@ -2,14 +2,14 @@
 <program_set id="pointer">
 <item id="9" type="fill_in_the_blank"><question>
 ポインタ変数を使用して、実数型の変数aの値を2倍するプログラムを作成します。<br/>
-[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+[ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
 <pre>
 #include&lt;stdio.h&gt;
 int main(void){
 	float a,*p;
 	p = [ A ];
 	*p=12.34;
-	printf("%.2f",[ B ]);
+	printf("%.2f\n",[ B ]);
 	return 0;
 }
 </pre>

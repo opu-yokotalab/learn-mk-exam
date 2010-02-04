@@ -6,15 +6,15 @@
 <pre>
 #include&lt;stdio.h&gt;
 int main(void){
-	char a = ''A'';
-	printf("a=%c, アドレス %p , サイズ %d", a, &amp;a, [ A ])
+	char a = 'A';
+	printf("a=%c, \t アドレス %p \t サイズ %d", a, &amp;a, [ A ]( a ));
 }
 </pre>
 </question>
 <response id="1">[A]=</response>
 <evaluate>
 <function>60</function>
-<correct id="1">sizeof(char)</correct>
+<correct id="1">sizeof</correct>
 <score>1</score>
 <weight/>
 <point>10</point>

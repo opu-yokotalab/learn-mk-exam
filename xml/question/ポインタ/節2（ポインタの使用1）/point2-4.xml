@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="shift_JIS" ?>
-<program_set id="pointer2">
+<program_set id="pointer">
 <item id="19" type="fill_in_the_blank"><question>
-次の5つの整数型のデータを配列s[]に初期化したのちに、<br/>
-各配列の和を求めるプログラムです。10、20、30、40、50<br/>
+次の5つの整数型のデータを配列s[]に初期化したのちに、各配列の和を求めるプログラムです。10、20、30、40、50<br/>
 [ A ][ B ]に当てはまるものは何でしょう。<br/><br/>
 <pre>
 #include&lt;stdio.h&gt;
@@ -23,11 +22,11 @@ int main(void){
 <response id="2">[B]=</response>
 <evaluate>
 <function>180</function>
-<correct id="1">s</correct>
+<correct id="1">&amp;s[0]</correct>
 <correct id="2">*p++</correct>
 <score>2</score>
 <weight/>
 <point>10</point>
 </evaluate>
-<explanation></explanation></item>
+<explanation>ポインタpに配列s[]の先頭アドレスを代入。ポインタpを増加させながら配列要素を参照します。</explanation></item>
 </program_set>

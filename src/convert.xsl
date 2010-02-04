@@ -339,6 +339,8 @@ default : </xsl:text>
   <xsl:apply-templates select="*[position()=2]"/>
 </xsl:template>
 
+
+
 <xsl:template match="ANDE">
   <xsl:apply-templates select="*[position()=1]"/>
   <!--<xsl:text disable-output-escaping="yes">&amp;=</xsl:text>-->
@@ -562,5 +564,7 @@ default : </xsl:text>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
+
+
 
 </xsl:stylesheet> 

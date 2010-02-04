@@ -51,6 +51,8 @@ class Make extends JFrame implements ActionListener {
   JScrollPane sectionScroll;
   JPanel subcenterPanel3;
   JScrollPane selectScroll;
+  
+  JPanel subcenterPanel4;
 
   JPanel subselectpanel;
 
@@ -225,9 +227,14 @@ class Make extends JFrame implements ActionListener {
     subcenterPanel3 = new JPanel();
     subcenterPanel3.setLayout(new BorderLayout());
     subcenterPanel3.setPreferredSize(new Dimension(600,600));
+    subcenterPanel4 = new JPanel();
+    subcenterPanel4.setLayout(new BorderLayout());
+    subcenterPanel4.setPreferredSize(new Dimension(600,600));
+    
     centerPanel.add(subcenterPanel1,"center1");
     centerPanel.add(sectionScroll,"center2");
     centerPanel.add(subcenterPanel3,"center3");
+    centerPanel.add(subcenterPanel4,"center4");
 
     /*メイン処理真中レイアウト*/
     putSection();
@@ -250,6 +257,11 @@ class Make extends JFrame implements ActionListener {
     subcenterPanel3.add(subselectpanel,BorderLayout.LINE_START);
     subcenterPanel3.add(rightPanel,BorderLayout.CENTER);
 
+    JPanel endPanel= new JPanel();
+    JLabel endLabel = new JLabel("問題作成終了しました。");
+    endPanel.add(endLabel);
+    subcenterPanel4.add(endPanel,BorderLayout.CENTER);
+    
     /*メイン処理右レイアウト*/
     TitledBorder border6 = new TitledBorder(inborder2,"▼出題ソース",TitledBorder.RIGHT,TitledBorder.TOP);
     config = new JButton("設定する");
@@ -558,7 +570,7 @@ class Make extends JFrame implements ActionListener {
       maincenterLayout.show(centerPanel,"center2");
     }else if(e.getActionCommand().matches("TRIAL[0-9]+")){//見るボタン
       number = Integer.parseInt(e.getActionCommand().replaceAll("TRIAL",""));
-      StringWriter string = XSLT.convertToSource((Document)QM.questionlist.get(number));
+      StringWriter string = XSLT.convertToSource((Document)QM.questionlist.get(number));//XMLからCのコードに変換
       outputtext.setText(null);
       outputtext.append(string.toString());
       outputtext.setDisabledTextColor(Color.BLACK);
@@ -590,10 +602,13 @@ class Make extends JFrame implements ActionListener {
       rbutton[number].setSelected(true);
       mainrightLayout.next(rightPanel);
     }else if(e.getActionCommand() == "OUTPUT"){
+      /*出力ボタンを押したときの処理*/
       int number = QM.total;
       for(int i=0 ; i<number ; i++){
-        if(rbutton[i].isSelected())
+        if(rbutton[i].isSelected()){
           makeOutputFile(i);
+        }
+        maincenterLayout.show(centerPanel,"center4");
       }
     }else if(e.getActionCommand() == "N"){
       maincenterLayout.next(centerPanel);
@@ -665,7 +680,7 @@ class Make extends JFrame implements ActionListener {
     }catch(IOException ex){
     	System.out.println("IOエラーが発生しました");
     	}
-    /*try{
+    try{
     	//DBへの記述（ローカル）
     	//ドライバクラスをロード
     	Class.forName("org.postgresql.Driver");
@@ -675,7 +690,7 @@ class Make extends JFrame implements ActionListener {
     	//ステートメントオブジェクトを生成
     	Statement stmt = con.createStatement();
     	//SQL文を作成
-    	String sql = "INSERT INTO question VALUES('" + (String)QM.id.get(number) + "','" + (String)QM.program_set.get(number) + "','" + sb.toString() + "');";
+    	String sql = "INSERT INTO question VALUES('" + (String)QM.id.get(number) + "','" + (String)QM.program_set.get(number) + "','"+ (String)QM.weight.get(number) +"','" + sb.toString() + "');";
     	//System.out.println(sql);//クエリチェック出力
     	//クエリを実行
     	int result = stmt.executeUpdate(sql);
@@ -686,9 +701,9 @@ class Make extends JFrame implements ActionListener {
       	}catch (Exception e){
       		e.printStackTrace();
       	}	
-     */ 
+     
       	//ソケット通信部
-    try{
+    /*try{
         // ソケット接続
   	  System.out.println("Start!!");//接続開始確認用
   	  
@@ -720,7 +735,7 @@ class Make extends JFrame implements ActionListener {
       }
       catch(IOException e){
         System.err.println("IO error: "+e);
-      }
+      }*/
     //ソケット通信部終わり
   }
   
@@ -828,7 +843,8 @@ class Make extends JFrame implements ActionListener {
   void makeBlankChecker(){
 	try{
     Dom domtree = new Dom(inp);
-    /*1.1基本構造*/
+    //入出力関数
+    /*1.1入力関数の引数が分かっているか*/
     if(subsectionTitle[0][0].isSelected() || sectiontitle[0].isSelected()){
     	/*有安テスト*/
     	if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self)){
@@ -838,18 +854,20 @@ class Make extends JFrame implements ActionListener {
     		System.out.println("Erorr:Can't create question 1.1");
     	}
     }
-    /*1.2定数、変数、データ型*/
+    /*1.2出力関数の引数が分かっているか*/
+    //定数変数データ型
     if(subsectionTitle[0][1].isSelected() || sectiontitle[0].isSelected()){/*動いてない*/
-    	System.out.println("1.2="+domtree.createblank("ARGUMENT",Dom.SELECT,Dom.rightchild));
-    	if(domtree.createblank("ARGUMENT",Dom.SELECT,Dom.rightchild)){
+    	//System.out.println("1.2="+domtree.createblank("ARGUMENT",Dom.SELECT,Dom.rightchild));
+    	/*if(domtree.createblank("ARGUMENT",Dom.SELECT,Dom.rightchild)){
     		System.out.println("OK!!!!!");
     		QM.qtype[0][1]++;
     	}
     	else {
     		System.out.println("Erorr:Can't create question 1.2");
-    	}
+    	}*/
     }
-    /*1.3printfと書式指定*/
+    /*1.3関数使用時のヘッダが分かっているか*/
+    //printf関数
     if(subsectionTitle[0][2].isSelected() || sectiontitle[0].isSelected()){
       if(domtree.createblank("printf",Dom.SELECT,Dom.self)){
         QM.qtype[0][2]++;
@@ -858,7 +876,9 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[0][2]++;
       }
     }
-    /*2.1scanfとアドレス演算子*/
+    //2簡単な入力と式
+    /*2.1変数がうまく定義出来ているか
+     *scanfとアドレス演算子*/
     if(subsectionTitle[1][0].isSelected() || sectiontitle[1].isSelected()){
       if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"scanf")){
         QM.qtype[1][0]++;
@@ -873,13 +893,16 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[1][0]++;
       }
     }
-    /*2.2式*/
+    /*2.2変数の使い方が適切か
+     * 式*/
     if(subsectionTitle[1][1].isSelected() || sectiontitle[1].isSelected()){
     }
-    /*2.3型変換*/
+    /*2.3演算子の使い方を理解しているか
+     * 型変換*/
     if(subsectionTitle[1][2].isSelected() || sectiontitle[1].isSelected()){
     }
-    /*2.4代入演算子*/
+    /*2.4フォーマット指定しが分かっているか
+     * 代入演算子*/
     if(subsectionTitle[1][3].isSelected() || sectiontitle[1].isSelected()){
       if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][3]++;
@@ -924,7 +947,8 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[1][3]++;
       }
     }
-    /*2.5インクリメント、デクリメント演算子*/
+    /*2.5インクリメント、デクリメント演算子
+     * インクリメント、デクリメント演算子*/
     if(subsectionTitle[1][4].isSelected() || sectiontitle[1].isSelected()){
       if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.rootonly)){
         QM.qtype[1][4]++;
@@ -939,7 +963,9 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[1][4]++;
       }
     }
-    /*3.1比較演算子と等価演算子*/
+    //制御構文
+    /*3.1必要となる引数が分かっているか
+     * 比較演算子と等価演算子*/
     if(subsectionTitle[2][0].isSelected() || sectiontitle[2].isSelected()){
       if(domtree.createblank("EQUAL",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
@@ -978,7 +1004,8 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[2][0]++;
       }
     }
-    /*3.2if文*/
+    /*3.2if文が分かっているか
+     * if文*/
     if(subsectionTitle[2][1].isSelected() || sectiontitle[2].isSelected()){
       if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][1]++;
@@ -1002,7 +1029,7 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[2][1]++;
       }
     }
-    /*3.3while文*/
+    /*3.3while文の処理の流れを理解しているか*/
     if(subsectionTitle[2][2].isSelected() || sectiontitle[2].isSelected()){
       if(domtree.createblank("WHILE",Dom.SELECT,Dom.rootonly)){
     	System.out.println("Output1");
@@ -1029,7 +1056,7 @@ class Make extends JFrame implements ActionListener {
     	QM.qtype[2][2]++;
       }
      }
-    /*3.4for文*/
+    /*3.4for文の処理の流れを理解しているか*/
     if(subsectionTitle[2][3].isSelected() || sectiontitle[2].isSelected()){
       if(domtree.createblank("FOR",Dom.SELECT,Dom.rootonly)){
     	QM.qtype[2][3]++;
@@ -1044,7 +1071,7 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[2][3]++;
       }
     }
-    /*3.5do-while文*/
+    /*3.5do-while文の処理の流れを理解しているか*/
     if(subsectionTitle[2][4].isSelected() || sectiontitle[2].isSelected()){
       if(domtree.createblank("DOWHILE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][4]++;
@@ -1059,7 +1086,7 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[2][4]++;
       }
     }
-    /*3.6switch*/
+    /*3.6switchの処理の流れを理解しているか*/
     if(subsectionTitle[2][5].isSelected() || sectiontitle[2].isSelected()){
       if(domtree.createblank("SWITCH",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][5]++;
@@ -1074,7 +1101,9 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[2][5]++;
       }
     }
-    /*4.1配列と配列の初期化*/
+    //4配列
+    /*4.1配列の定義の仕方を理解しているか
+     * 配列と配列の初期化*/
     if(subsectionTitle[3][0].isSelected() || sectiontitle[3].isSelected()){
       if(domtree.createblank("DECLARATOR","ARRAY",Dom.ALL,Dom.haschild)){
         QM.qtype[3][0]++;
@@ -1089,7 +1118,8 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[3][0]++;
       }
     }
-    /*4.2文字型配列*/
+    /*4.2配列要素へのアクセスの仕方を理解しているか
+     * 文字型配列*/
     if(subsectionTitle[3][1].isSelected() || sectiontitle[3].isSelected()){
       if(domtree.createblank("DECLARATOR","ARRAY",Dom.ALL,Dom.haschild)){
         QM.qtype[3][1]++;
@@ -1103,25 +1133,29 @@ class Make extends JFrame implements ActionListener {
         QM.qtype[3][1]++;
       }
     }
-    /*4.3多次元配列*/
+    /*4.3他次元配列の定義の仕方を理解しているか
+     * 多次元配列*/
     if(subsectionTitle[3][2].isSelected() || sectiontitle[3].isSelected()){
     }
-    /*5.1関数の定義*/
+    //5関数
+    /*5.1関数の定義を理解しているか*/
     if(subsectionTitle[4][0].isSelected() || sectiontitle[4].isSelected()){
     }
-    /*5.2関数呼び出し*/
+    /*5.2関数呼び出しが出来るか*/
     if(subsectionTitle[4][1].isSelected() || sectiontitle[4].isSelected()){
     }
-    /*5.3関数の戻り値*/
+    /*5.3関数の戻り値が分かっているか*/
     if(subsectionTitle[4][2].isSelected() || sectiontitle[4].isSelected()){
     }
-    /*5.4プロトタイプ宣言*/
+    /*5.4必要なヘッダが理解できているか
+     * プロトタイプ宣言*/
     if(subsectionTitle[4][3].isSelected() || sectiontitle[4].isSelected()){
     	if(domtree.createblank("IF",Dom.ALL)){
     		QM.qtype[4][3]++;
     	}
     }
-    /*5.5ライブラリ*/
+    /*5.5必要な関数が理解できているか
+     * ライブラリ*/
     if(subsectionTitle[4][4].isSelected() || sectiontitle[4].isSelected()){
 
     	if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly)){

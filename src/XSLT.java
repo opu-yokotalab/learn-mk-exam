@@ -27,7 +27,9 @@ public class XSLT {
       StringWriter write = new StringWriter();
       transformer1.transform(dom,new StreamResult(write));
       //System.out.println(dom);//チェック出力
-      return Indent.convert(write);
+      //System.out.println(write);//チェック出力
+      return write;
+      //return Indent.convert(write);//現在動作停止中(<や>が入ると上手く動作しない、バグ？？）
     } catch(Exception e) {
       e.printStackTrace();
       return null;

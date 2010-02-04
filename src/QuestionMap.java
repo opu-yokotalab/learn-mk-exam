@@ -44,18 +44,27 @@ public class QuestionMap{
   }
 
   public void addQuestion(Document doc,ArrayList ans){
-    String defaultsentence = "次の空欄を埋めなさい。";
+    String defaultsentence = "次の空欄を埋めなさい。";//問題文
+    String defaultp_set = "test_set001";//プログラムセット
+    String defaultid = "200";//問題ID
+    String defaulthints = "ここにヒントを入力します。";//ヒント
+    String defaultfunc = "60";//制限時間
+    String defaultscore = "10";//（現在使えていない)
+    String defaultweight = "1";//レベル（仮おき）
+    String defaultpoint = "10";//（現在使えていない）
+    String defaultexp = "ここにコメントを入力します。";//コメント
+    
     questionlist.add(doc);
     answerlist.add(ans);
-    program_set.add(null);
-    id.add(null);
-    hints.add(null);
-    function.add(null);
+    program_set.add(defaultp_set);
+    id.add(defaultid);
+    hints.add(defaulthints);
+    function.add(defaultfunc);
     sentence.add(defaultsentence);
-    score.add(null);
-    weight.add(null);
-    point.add(null);
-    explanation.add(null);
+    score.add(defaultscore);
+    weight.add(defaultweight);
+    point.add(defaultpoint);
+    explanation.add(defaultexp);
     total++;
   }
 }

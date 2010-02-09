@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="point1">
+<item id="87" type="fill_in_the_blank"><question>
+sが指す文字列に文字列を連結する関数char *strxcat(char *s,…);を作成する。<br/>
+なお、第2引数以降は全てconst char *型であり、それらが指す文字列をすべて連結する。<br/>
+ただし、連結するのは、からである文字列あるいは空ポインタの直前までの引数が指す文字列とする。<br/>
+[ A ]と[ B ]に当てはまるものは何でしょう。<br/><br/>
+
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdarg.h&gt;
+#include&lt;string.h&gt;
+
+/*-- 空文字列または空ポインタより前の全引数の文字列を連結--*/
+char *strxcat(char *s, ...){
+	char	*p = s;
+	char	*str;
+	va_list	ap;
+
+	va_start(ap, s);	/*可変個引数アクセス開始*/
+
+	while (*s)			/*第1文字列の末尾にポインタを移動*/
+		s++;
+
+	while ((str = va_arg(ap, char*)) != NULL &amp;&amp; *str != '\0'){
+		while (*str)
+			*s++ = *str++;
+	}
+	*s = '\0';			/*文字列の終端*/
+
+	va_end(ap);			/*可変個引数アクセス終了*/
+
+	return(p);
+}
+
+int main(void){
+	char s[100] = "ABC";
+
+	printf("%s\n", strxcat(s, ""));
+	printf("%s\n", strxcat(s, NULL));
+	printf("%s\n", strxcat(s, "123", ""));
+	printf("%s\n", strxcat(s, "EFGH", "IJ", NULL));
+
+	return 0;
+
+}
+
+○実行例
+ABC
+ABC
+ABC123
+ABC123EFGHIJ
+</pre>
+</question>
+<response id="1">[A]=</response>
+<response id="2">[B]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">p</correct>
+<correct id="2">malloc</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>文字列を動的に確保するにはmallocを用います。</explanation>
+</item>
+</program_set>

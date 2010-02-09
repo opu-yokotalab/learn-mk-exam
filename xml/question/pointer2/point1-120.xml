@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="point1">
+<item id="120" type="fill_in_the_blank"><question>
+↓のプログラムは配列に格納された気温のデータから、平均気温を求めるプログラムです。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+
+<pre>
+#include &lt;stdio.h&gt;
+
+float mean_tmp(int*, int);		/* 関数の引数ポインタ・プロトタイプ宣言 */
+
+int main( void)
+{
+	/* 配列変数の初期化 */
+	int temp[10] = {30, 28, 25, 27, 32, 30, 28, 33, 26, 25};/*各日の気温*/
+	int day;
+	float meantmp;				/* 平均気温の変数 */
+
+	day = sizeof(temp)/sizeof(int);		/* 合計の日 */
+
+	meantmp = mean_tmp(temp, day);		/* 平均気温の計算 */
+
+	printf("平均気温＝%0.2f", meantmp);		/* 結果を画面出力 */
+
+	return 0;
+}
+
+/* 引数ポインタの関数定義・平均気温の計算 */
+float mean_tmp(int [ A ], int day)
+{
+	int sum = 0;		/* 10日間の合計気温変数 */
+	int i;			/* ポインタを進めるためのインデックス */
+	float mean;		/* 平均気温 */
+
+	for(i=0; i&lt;day; i++) 
+	{
+		sum = sum + *(temp + i);	/* １０日間の合計気温を出す */
+	}
+
+	mean = (float)sum/day;			/* 平均気温を計算 */
+
+	return mean;
+}
+
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">*temp</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>引数に来るのは配列の先頭アドレスなので、ポインタを渡す。</explanation>
+</item>
+</program_set>

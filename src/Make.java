@@ -58,7 +58,8 @@ class Make extends JFrame implements ActionListener {
 
   JPanel subsubright1;
   JPanel subsubright2;
-
+  JScrollPane subsubrightScroll;
+  
   JScrollPane questionScroll;
 
   JButton config;
@@ -272,12 +273,14 @@ class Make extends JFrame implements ActionListener {
     subsubright1.setBorder(border6);
 
     subsubright1.setPreferredSize(new Dimension(300,600));
+    //subsubright1.setPreferredSize(new Dimension(150,300));
     subsubright1.setLayout(new BorderLayout());
     subsubright1.add(outputScroll,BorderLayout.CENTER);
     subsubright1.add(config,BorderLayout.PAGE_END);
     subrightPanel1.add(subsubright1);
     subsubright2 = new JPanel();
     subsubright2.setPreferredSize(new Dimension(300,400));
+    //subsubright2.setPreferredSize(new Dimension(150,200));
     TitledBorder border5 = new TitledBorder(inborder2,"▼問題の設定",TitledBorder.RIGHT,TitledBorder.TOP);
     subrightPanel2.setBorder(border5);
     subsubright2.setLayout(new BoxLayout(subsubright2,BoxLayout.Y_AXIS));
@@ -285,50 +288,66 @@ class Make extends JFrame implements ActionListener {
 
     /*問題の項目設定画面*/
     subsubright2.setPreferredSize(new Dimension(300,400));
+    //subsubright2.setPreferredSize(new Dimension(150,200));//デモ用
     GridBagLayout configlayout = new GridBagLayout();
     subsubright2.setLayout(configlayout);
+    subsubrightScroll = new JScrollPane(subsubright2);
 
     GridBagConstraints configgbc = new GridBagConstraints();
     configgbc.fill = GridBagConstraints.BOTH;
 
     /*設定エリアの各項目の長さ設定*/
+    Dimension minDim1 = new Dimension(175,50);//文字入力欄の最小値
+    Dimension minDim2 = new Dimension(50,50);//数字入力欄の最小値
     question = new JTextArea();
+    //question.setMinimumSize(minDim);
     questionScroll = new JScrollPane(question);
     questionScroll.setPreferredSize(new Dimension(300,200));
+    //questionScroll.setPreferredSize(new Dimension(150,100));
     JTextArea answer = new JTextArea();
+    
     
     /*問題文*/
     //sentence = new JTextArea(2,15);//問題文複数行（表示でつぶれる）
     //JScrollPane sentenceScroll = new JScrollPane(sentence);
     sentence = new JTextField(20);
-    
+    sentence.setMinimumSize(minDim1);//textfieldの幅の最小値を明示的に決める
+
     /*プログラムセット（グループ）*/
     program_set = new JTextField(10); 
+    program_set.setMinimumSize(minDim1);
     
     /*ID*/
     id = new JTextField(10);
+    id.setMinimumSize(minDim2);
     
     /*ヒント*/
     //hints = new JTextArea(2,15);//ヒント複数行（表示でつぶれる）
     //JScrollPane hintsScroll = new JScrollPane(hints);
     hints = new JTextField(20);
+    hints.setMinimumSize(minDim1);
     
     /**/
     function = new JTextField(10);
+    function.setMinimumSize(minDim2);
     
     /**/
     score = new JTextField(10);
+    score.setMinimumSize(minDim2);
     
     /**/
     weight = new JTextField(10);
+    weight.setMinimumSize(minDim2);
     
     /**/
     point = new JTextField(10);
+    point.setMinimumSize(minDim2);
     
     /*解説*/
     //explanation = new JTextArea(2,15); //解説複数行（表示でつぶれる）
     //JScrollPane explanationScroll = new JScrollPane(explanation);
     explanation = new JTextField(20);
+    explanation.setMinimumSize(minDim1);
     
     JPanel[] panel = new JPanel[9];
     GridBagLayout panellayout = new GridBagLayout();
@@ -351,7 +370,8 @@ class Make extends JFrame implements ActionListener {
     //panel[0].add(sentenceScroll);
     panellayout.setConstraints(sentence,panelgbc);//test
     panel[0].add(sentence);//test
-    label[1] = new JLabel("program_set:");
+    //label[1] = new JLabel("program_set:");
+    label[1] = new JLabel("グループ:");
     panellayout.setConstraints(program_set,panelgbc);
     panel[1].add(program_set);
     label[2] = new JLabel("id:");
@@ -404,8 +424,8 @@ class Make extends JFrame implements ActionListener {
     configgbc.weighty = 0;
     configlayout.setConstraints(save, configgbc);
     subsubright2.add(save);
-    subrightPanel2.add(subsubright2,BorderLayout.CENTER);
-
+    //subrightPanel2.add(subsubright2,BorderLayout.CENTER);
+    subrightPanel2.add(subsubrightScroll,BorderLayout.CENTER);
     
 
     
@@ -847,9 +867,15 @@ class Make extends JFrame implements ActionListener {
     /*1.1入力関数の引数が分かっているか*/
     if(subsectionTitle[0][0].isSelected() || sectiontitle[0].isSelected()){
     	/*有安テスト*/
-    	if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self)){
-    		QM.qtype[0][0]++;
-    	}
+        if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"scanf")){
+            QM.qtype[0][0]++;
+        }	
+        if(domtree.createblank("scanf",Dom.SELECT,Dom.self)){
+        	QM.qtype[0][0]++;
+        }
+    	//if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self)){
+    	//	QM.qtype[0][0]++;
+    	//}
     	else {
     		System.out.println("Erorr:Can't create question 1.1");
     	}
@@ -865,27 +891,22 @@ class Make extends JFrame implements ActionListener {
     	else {
     		System.out.println("Erorr:Can't create question 1.2");
     	}*/
+    	if(domtree.createblank("printf",Dom.SELECT,Dom.self)){
+    		QM.qtype[0][1]++;
+    	}
+    	if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"printf")){
+    		QM.qtype[0][1]++;
+    	}
     }
     /*1.3関数使用時のヘッダが分かっているか*/
     //printf関数
     if(subsectionTitle[0][2].isSelected() || sectiontitle[0].isSelected()){
-      if(domtree.createblank("printf",Dom.SELECT,Dom.self)){
-        QM.qtype[0][2]++;
-      }
-      if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"printf")){
-        QM.qtype[0][2]++;
-      }
+
     }
     //2簡単な入力と式
     /*2.1変数がうまく定義出来ているか
      *scanfとアドレス演算子*/
     if(subsectionTitle[1][0].isSelected() || sectiontitle[1].isSelected()){
-      if(domtree.createblank("EXPRESSION","FORMAT",Dom.SELECT,Dom.self,Dom.exist,"scanf")){
-        QM.qtype[1][0]++;
-      }
-      if(domtree.createblank("scanf",Dom.SELECT,Dom.self)){
-        QM.qtype[1][0]++;
-      }
       if(domtree.createblank("AMP",Dom.ALL)){
         QM.qtype[1][0]++;
       }
@@ -896,56 +917,87 @@ class Make extends JFrame implements ActionListener {
     /*2.2変数の使い方が適切か
      * 式*/
     if(subsectionTitle[1][1].isSelected() || sectiontitle[1].isSelected()){
+    	if(domtree.createblank("DECLARATION",Dom.SELECT,Dom.leftchild)){
+    		System.out.println("create2.2-1");
+    		QM.qtype[1][1]++;
+    	}
+    	if(domtree.createblank("DECLARATION",Dom.SELECT,Dom.rightchild)){
+    		System.out.println("create2.2-1");
+    		QM.qtype[1][1]++;
+    	}
     }
     /*2.3演算子の使い方を理解しているか
      * 型変換*/
     if(subsectionTitle[1][2].isSelected() || sectiontitle[1].isSelected()){
+        if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rootonly)){
+        	QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.leftchild)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rightchild)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.self)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("PLUSE",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("PLUSE",Dom.SELECT,Dom.self)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("MINUSE",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("MINUSE",Dom.SELECT,Dom.self)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("RESTE",Dom.SELECT,Dom.rootonly)){
+   	         QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("RESTE",Dom.SELECT,Dom.self)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("DIVE",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("DIVE",Dom.SELECT,Dom.self)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("MULTIE",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("MULTIE",Dom.SELECT,Dom.self)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("EQUAL",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("NOTE",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("FEWER",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("GREATER",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("FORE",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
+          if(domtree.createblank("BORE",Dom.SELECT,Dom.rootonly)){
+        	  QM.qtype[1][2]++;
+          }
     }
     /*2.4フォーマット指定しが分かっているか
      * 代入演算子*/
     if(subsectionTitle[1][3].isSelected() || sectiontitle[1].isSelected()){
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.leftchild)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.rightchild)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("ASSIGNMENT",Dom.SELECT,Dom.self)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("PLUSE",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("PLUSE",Dom.SELECT,Dom.self)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("MINUSE",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("MINUSE",Dom.SELECT,Dom.self)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("RESTE",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("RESTE",Dom.SELECT,Dom.self)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("DIVE",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("DIVE",Dom.SELECT,Dom.self)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("MULTIE",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[1][3]++;
-      }
-      if(domtree.createblank("MULTIE",Dom.SELECT,Dom.self)){
-        QM.qtype[1][3]++;
-      }
+    	if(domtree.createblank("CAST",Dom.SELECT,Dom.leftchild)){
+    		QM.qtype[1][3]++;
+    		System.out.println("create2.4-1");
+    	}
+
     }
     /*2.5インクリメント、デクリメント演算子
      * インクリメント、デクリメント演算子*/
@@ -967,42 +1019,38 @@ class Make extends JFrame implements ActionListener {
     /*3.1必要となる引数が分かっているか
      * 比較演算子と等価演算子*/
     if(subsectionTitle[2][0].isSelected() || sectiontitle[2].isSelected()){
-      if(domtree.createblank("EQUAL",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[2][0]++;
-      }
       if(domtree.createblank("EQUAL",Dom.SELECT,Dom.self)){
-        QM.qtype[2][0]++;
-      }
-      if(domtree.createblank("NOTE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
       }
       if(domtree.createblank("NOTE",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
       }
-      if(domtree.createblank("FEWER",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[2][0]++;
-      }
       if(domtree.createblank("FEWER",Dom.SELECT,Dom.self)){
-        QM.qtype[2][0]++;
-      }
-      if(domtree.createblank("GREATER",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
       }
       if(domtree.createblank("GREATER",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
       }
-      if(domtree.createblank("FORE",Dom.SELECT,Dom.rootonly)){
-        QM.qtype[2][0]++;
-      }
       if(domtree.createblank("FORE",Dom.SELECT,Dom.self)){
-        QM.qtype[2][0]++;
-      }
-      if(domtree.createblank("BORE",Dom.SELECT,Dom.rootonly)){
         QM.qtype[2][0]++;
       }
       if(domtree.createblank("BORE",Dom.SELECT,Dom.self)){
         QM.qtype[2][0]++;
       }
+      //2.5インクリメントと同じ問題作成ルール
+      if(domtree.createblank("UNARYPLUS",Dom.SELECT,Dom.self)){
+          QM.qtype[2][0]++;
+      }
+      if(domtree.createblank("UNARYMINUS",Dom.SELECT,Dom.self)){
+    	  QM.qtype[2][0]++;
+      }
+      if(domtree.createblank("POSTFIXPLUS",Dom.SELECT,Dom.self)){
+    	  QM.qtype[2][0]++;
+      }
+      if(domtree.createblank("POSTFIXMINUS",Dom.SELECT,Dom.self)){
+    	  QM.qtype[2][0]++;
+      }
+      //ここまで
     }
     /*3.2if文が分かっているか
      * if文*/
@@ -1150,17 +1198,17 @@ class Make extends JFrame implements ActionListener {
     /*5.4必要なヘッダが理解できているか
      * プロトタイプ宣言*/
     if(subsectionTitle[4][3].isSelected() || sectiontitle[4].isSelected()){
-    	if(domtree.createblank("IF",Dom.ALL)){
-    		QM.qtype[4][3]++;
-    	}
+    	//if(domtree.createblank("IF",Dom.ALL)){
+    	//	QM.qtype[4][3]++;
+    	//}
     }
     /*5.5必要な関数が理解できているか
      * ライブラリ*/
     if(subsectionTitle[4][4].isSelected() || sectiontitle[4].isSelected()){
 
-    	if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly)){
-            QM.qtype[4][4]++;
-    	}
+    	//if(domtree.createblank("IF",Dom.SELECT,Dom.rootonly)){
+        //    QM.qtype[4][4]++;
+    	//}
     }
     /*5.6記憶クラスとスコープ*/
     if(subsectionTitle[4][5].isSelected() || sectiontitle[4].isSelected()){

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="point21">
+<item id="122" type="fill_in_the_blank"><question>
+商品の値段を入力して、消費税を加算した合計金額を計算するプログラムを作る。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+
+<pre>
+#include&lt;stdio.h&gt;
+
+void addTax(int* data )
+{
+	*data = *data * 1.05;/*消費税を加える */
+
+	return;
+}
+
+main (){
+
+	int pay;/* 基データ */
+	char buf;/* キー入力を待つ */
+	
+	pay = 1000;/* 初期値は１０００円 */
+
+	printf("pay = ");
+	scanf("%d",&amp;pay);
+
+	printf( "Before addTax : pay = %d", pay );/* 画面に出力 */
+
+	addTax( [ A ] );
+
+	printf( "After addTax : pay = %d", pay );/* 画面に出力 */
+
+	return 0;
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">&amp;pay</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>payの値を参照渡しで関数に渡します。</explanation>
+</item>
+</program_set>

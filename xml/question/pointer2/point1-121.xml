@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="point21">
+<item id="121" type="fill_in_the_blank"><question>
+まさし君のプロフィールを記録し、表示させるプログラムを作ります。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+/* 構造体hitoを定義 */
+struct hito {
+	int age;/* 年齢 */
+	char blood[3];/* 血液型 */
+};
+
+void main(void) {
+
+		/* hito型変数masasiを宣言 */
+		struct hito masasi;
+
+		/* hito型構造体のポインタ変数pを宣言 */
+		struct hito* p;
+
+		/* 構造体masasiの先頭アドレスをポインタ変数pに代入 */
+		p = &amp;masasi;
+
+		/* まさし君のプロフィールを設定 */
+		p-&gt;age = 10;
+		strcpy(p-&gt;blood, "A");
+
+		/* 年齢、血液型表示 */
+		printf("まさしくんのプロフィール\n");
+		printf("年齢：%d歳\n", p-&gt;age);
+		printf("血液型：%s型\n", p-&gt;blood);
+
+}
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">&amp;masasi</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>構造体の先頭アドレスは&amp;masasiで表す。</explanation>
+</item>
+</program_set>

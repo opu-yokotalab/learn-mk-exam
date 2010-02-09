@@ -1,0 +1,42 @@
+insert into question values ('93','point1','1',
+'<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="point1">
+<item id="93" type="fill_in_the_blank"><question>
+入力された文字列を1文字間隔で表示するプログラムを作ります。<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+
+<pre>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char buff[256], *pb;    /* 入力文字列用, ポインタ */
+
+    pb = buff;     /* ポインタ変数初期化 */
+
+    printf("文字列 : ");     /* プロンプト表示 */
+    gets(pb);               /* 文字列入力 */
+
+    while(*pb != '\0'){     /* ナル文字まで繰り返す */
+        printf("%c ", [ A ]);    /* 1文字ずつ表示 */
+        ++pb;
+    }
+    return(0);
+}
+
+実行例
+文字列：abcde
+a b c d e
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>180</function>
+<correct id="1">*pb</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>buffに格納された文字を1文字ずつ参照していきます。</explanation>
+</item>
+</program_set>');

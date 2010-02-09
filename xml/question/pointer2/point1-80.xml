@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="shift_JIS" ?>
+<program_set id="point1">
+<item id="80" type="fill_in_the_blank"><question>
+以下のように宣言される3次元配列<br/>
+int mx[3][2][4];<br/>
+の全要素に３つの添え字の和を代入するプログラムを作る<br/>
+[ A ]に当てはまるものは何でしょう。<br/><br/>
+
+<pre>
+#include&lt;stdio.h&gt;
+
+void fill_avalue(int a[][2][4], int m,n,o){
+	int i,j,k;
+	
+	for(i=0; i&lt;m; i++){
+		for(j=0; j&lt;n; j++){
+			for(k=0; k&lt;k; k++){
+				a[i][j][k] = i+j+k;
+			}
+		}
+	}
+}
+
+int main(void){
+	int i,j,k;
+	int mx[3][2][4];
+	
+	fill_avalue([ A ],3,2,4);
+	
+	for(i=0; i &lt; 3; i++){
+		for(j=0; j &lt; 2; j++){
+			for(k=0; k &lt; 4; k++){
+				printf("mx[%d][%d][%d] = %3d",i,j,k, mx[i][j][k])
+			}
+		}
+	}
+}
+
+実行結果一例
+mx[0][0][0] = 0
+	：
+mx[1][2][3] = 6
+	：
+mx[3][2][2] = 7
+</pre>
+</question>
+<response id="1">[A]=</response>
+<evaluate>
+<function>240</function>
+<correct id="1">mx</correct>
+<score>1</score>
+<weight/>
+<point>10</point>
+</evaluate>
+<explanation>関数fill_avalueには配列mxのアドレスを渡します。</explanation>
+</item>
+</program_set>

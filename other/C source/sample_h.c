@@ -17,7 +17,7 @@ int main (void){
 		c = c+d;
 	}
 
-	e=c;
+	e=(int)c;
 
 	f=e+c;
 
